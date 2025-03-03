@@ -1,0 +1,17 @@
+D:\POO(C#)\Sistema de Estoque\Sistema de Estoque\bin\Debug\Sistema de Estoque.exe.config
+D:\POO(C#)\Sistema de Estoque\Sistema de Estoque\bin\Debug\Sistema de Estoque.exe
+D:\POO(C#)\Sistema de Estoque\Sistema de Estoque\bin\Debug\Sistema de Estoque.pdb
+D:\POO(C#)\Sistema de Estoque\Sistema de Estoque\bin\Debug\MySql.Data.dll
+D:\POO(C#)\Sistema de Estoque\Sistema de Estoque\bin\Debug\System.Memory.dll
+D:\POO(C#)\Sistema de Estoque\Sistema de Estoque\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\POO(C#)\Sistema de Estoque\Sistema de Estoque\bin\Debug\System.Numerics.Vectors.dll
+D:\POO(C#)\Sistema de Estoque\Sistema de Estoque\bin\Debug\System.Buffers.dll
+D:\POO(C#)\Sistema de Estoque\Sistema de Estoque\bin\Debug\MySql.Data.xml
+D:\POO(C#)\Sistema de Estoque\Sistema de Estoque\obj\Debug\Sistema de Estoque.csproj.AssemblyReference.cache
+D:\POO(C#)\Sistema de Estoque\Sistema de Estoque\obj\Debug\Sistema_de_Estoque.Properties.Resources.resources
+D:\POO(C#)\Sistema de Estoque\Sistema de Estoque\obj\Debug\Sistema_de_Estoque.Start.resources
+D:\POO(C#)\Sistema de Estoque\Sistema de Estoque\obj\Debug\Sistema de Estoque.csproj.GenerateResource.cache
+D:\POO(C#)\Sistema de Estoque\Sistema de Estoque\obj\Debug\Sistema de Estoque.csproj.CoreCompileInputs.cache
+D:\POO(C#)\Sistema de Estoque\Sistema de Estoque\obj\Debug\Sistema .0E3DB978.Up2Date
+D:\POO(C#)\Sistema de Estoque\Sistema de Estoque\obj\Debug\Sistema de Estoque.exe
+D:\POO(C#)\Sistema de Estoque\Sistema de Estoque\obj\Debug\Sistema de Estoque.pdb
