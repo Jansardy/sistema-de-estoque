@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using MySql.Data.MySqlClient;
 using Sistema_de_Estoque.Entities;
-using System.Security.Cryptography;
-using System.Text;
+using Sistema_de_Estoque.Utils;
 
 namespace Sistema_de_Estoque.DAL
 {
@@ -25,7 +24,7 @@ namespace Sistema_de_Estoque.DAL
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("p_Nome", usuario.Nome);
                         cmd.Parameters.AddWithValue("p_Login", usuario.Login);
-                        cmd.Parameters.AddWithValue("p_Senha", GerarHashSHA256(usuario.Senha));
+                        cmd.Parameters.AddWithValue("p_Senha", SecurityHelper.GerarHashSHA256(usuario.Senha));
                         cmd.Parameters.AddWithValue("p_NivelAcesso", usuario.NivelAcesso);
                         cmd.ExecuteNonQuery();
                     }
@@ -98,7 +97,7 @@ namespace Sistema_de_Estoque.DAL
 
                         if (!string.IsNullOrEmpty(usuario.Senha))
                         {
-                            cmd.Parameters.AddWithValue("p_Senha", GerarHashSHA256(usuario.Senha));
+                            cmd.Parameters.AddWithValue("p_Senha", SecurityHelper.GerarHashSHA256(usuario.Senha));
                         }
                         else
                         {
@@ -139,21 +138,5 @@ namespace Sistema_de_Estoque.DAL
             }
         }
         #endregion
-
-        public static string GerarHashSHA256(string senha)
-        {
-            using (SHA256 sha256 = SHA256.Create())
-            {
-                byte[] bytes = Encoding.UTF8.GetBytes(senha);
-                byte[] hash = sha256.ComputeHash(bytes);
-
-                StringBuilder builder = new StringBuilder();
-                foreach (byte b in hash)
-                {
-                    builder.Append(b.ToString("x2"));
-                }
-                return builder.ToString();
-            }
-        }
     }
 }

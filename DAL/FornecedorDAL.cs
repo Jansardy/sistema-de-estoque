@@ -104,7 +104,6 @@ namespace Sistema_de_Estoque.DAL
         }
         #endregion
 
-
         #region Deletar
         public void DeletarFornecedor(int id)
         {
