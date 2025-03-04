@@ -11,7 +11,7 @@ namespace Sistema_de_Estoque.DAL
 {
     public class ProdutoDAL
     {
-        private readonly string strConnection = "server=127.0.0.1;port=3306;User Id=root;database=curso_db;password=J#nsen1804";
+        private readonly string strConnection = "server=127.0.0.1;port=3306;User Id=root;database=estoquedb;password=J#nsen1804";
 
         #region Inserir
         public void InserirProduto(Produto produto)
