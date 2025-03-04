@@ -4,12 +4,52 @@ using System.Data;
 using MySql.Data.MySqlClient;
 using Sistema_de_Estoque.Entities;
 using Sistema_de_Estoque.Utils;
+using System.Security.Cryptography;
+using System.Windows.Forms;
 
 namespace Sistema_de_Estoque.DAL
 {
     public class UsuariosDAL
     {
-        private readonly string strConnection = "server=127.0.0.1;port=3306;User Id=root;database=curso_db;password=J#nsen1804";
+        private readonly string strConnection = "server=127.0.0.1;port=3306;User Id=root;database=estoquedb;password=J#nsen1804";
+
+        #region Login
+        public bool ValidarLogin(string usuario, string senha)
+        {
+            const string query = "CALL sp_ValidarLogin(@p_Usuario, @p_Senha)";
+
+            try
+            {
+                using (MySqlConnection conexao = new MySqlConnection(strConnection))
+                {
+                    conexao.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(query, conexao))
+                    {
+
+                        cmd.Parameters.AddWithValue("@p_Usuario", usuario);
+                        cmd.Parameters.AddWithValue("@p_Senha", SecurityHelper.ComputeSha256Hash(senha));
+
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                if (reader["status"].ToString() == "SUCESSO")
+                                {
+                                    return true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro no Login: " + ex.Message);
+            }
+
+            return false;
+        }
+        #endregion
 
         #region Inserir
         public void InserirUsuario(Usuario usuario)

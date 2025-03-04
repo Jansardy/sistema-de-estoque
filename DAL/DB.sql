@@ -215,3 +215,23 @@ BEGIN
     DELETE FROM Usuarios WHERE ID = p_ID;
 END $$
 DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE sp_ValidarLogin(
+	IN p_Usuario VARCHAR(50),
+    IN p_Senha VARCHAR(255)
+)
+BEGIN
+    DECLARE v_Count INT;
+    
+    SELECT COUNT(*) INTO v_Count
+    FROM Usuarios
+    WHERE Login = p_Usuario AND Senha = p_Senha;
+    
+    IF v_Count > 0 THEN
+        SELECT 'SUCESSO' AS status;
+    ELSE
+        SELECT 'FALHA' AS status;
+    END IF;
+END //
+DELIMITER ;

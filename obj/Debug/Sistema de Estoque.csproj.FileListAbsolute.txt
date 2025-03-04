@@ -15,3 +15,5 @@ D:\POO(C#)\Sistema de Estoque\Sistema de Estoque\obj\Debug\Sistema de Estoque.cs
 D:\POO(C#)\Sistema de Estoque\Sistema de Estoque\obj\Debug\Sistema .0E3DB978.Up2Date
 D:\POO(C#)\Sistema de Estoque\Sistema de Estoque\obj\Debug\Sistema de Estoque.exe
 D:\POO(C#)\Sistema de Estoque\Sistema de Estoque\obj\Debug\Sistema de Estoque.pdb
+D:\POO(C#)\Sistema de Estoque\Sistema de Estoque\obj\Debug\Sistema_de_Estoque.UI.frmLogin.resources
+D:\POO(C#)\Sistema de Estoque\Sistema de Estoque\obj\Debug\Sistema_de_Estoque.UI.frmMain.resources

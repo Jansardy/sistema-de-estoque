@@ -8,12 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Sistema_de_Estoque.UI;
 
 namespace Sistema_de_Estoque
 {
     public partial class Start : Form
     {
         private int progress = 0;
+        frmLogin login = new frmLogin();
 
         public Start()
         {
@@ -39,7 +41,7 @@ namespace Sistema_de_Estoque
             {
                 timer1.Stop();
                 this.Hide();
-                Application.Exit();
+                login.Show();
             }
         }
 
