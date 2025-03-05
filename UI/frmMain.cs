@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Sistema_de_Estoque.Entities;
+using Sistema_de_Estoque.UI.Cadastros;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,29 @@ namespace Sistema_de_Estoque.UI
 {
     public partial class frmMain : Form
     {
-        public frmMain()
+        private string usuario;
+
+        public frmMain(string usuarioLogado)
         {
             InitializeComponent();
+            usuario = usuarioLogado;
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            lbl_User.Text = $"Usuário: {usuario}";
+            lbl_data.Text = $"Data: {DateTime.Now.ToString("dd/MM/yyyy")}";
+        }
+
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void usuárioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmUsuarios frmUsuarios = new frmUsuarios();
+            frmUsuarios.Show();
         }
     }
 }

@@ -17,3 +17,6 @@ D:\POO(C#)\Sistema de Estoque\Sistema de Estoque\obj\Debug\Sistema de Estoque.ex
 D:\POO(C#)\Sistema de Estoque\Sistema de Estoque\obj\Debug\Sistema de Estoque.pdb
 D:\POO(C#)\Sistema de Estoque\Sistema de Estoque\obj\Debug\Sistema_de_Estoque.UI.frmLogin.resources
 D:\POO(C#)\Sistema de Estoque\Sistema de Estoque\obj\Debug\Sistema_de_Estoque.UI.frmMain.resources
+D:\POO(C#)\Sistema de Estoque\Sistema de Estoque\obj\Debug\Sistema_de_Estoque.UI.Cadastros.frmFornecedores.resources
+D:\POO(C#)\Sistema de Estoque\Sistema de Estoque\obj\Debug\Sistema_de_Estoque.UI.Cadastros.frmProdutos.resources
+D:\POO(C#)\Sistema de Estoque\Sistema de Estoque\obj\Debug\Sistema_de_Estoque.UI.Cadastros.frmUsuarios.resources

@@ -41,7 +41,7 @@ namespace Sistema_de_Estoque.UI
                 {
                     MessageBox.Show("Login realizado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Hide();
-                    frmMain main = new frmMain();
+                    frmMain main = new frmMain(txtBox_User.Text);
                     main.Show();
                 }
                 else
