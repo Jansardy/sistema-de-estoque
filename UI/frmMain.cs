@@ -16,12 +16,19 @@ namespace Sistema_de_Estoque.UI
     {
         private string usuario;
 
-        public frmMain(string usuarioLogado)
+        public frmMain(string usuarioLogado, string nivelAcesso)
         {
             InitializeComponent();
             usuario = usuarioLogado;
-        }
 
+            if (nivelAcesso == "Vendedor")
+            {
+                usuárioToolStripMenuItem.Enabled = false;
+                fornecedorToolStripMenuItem.Enabled = false;
+                atualizarBancoDeDadosToolStripMenuItem.Enabled = false;
+            }
+        }
+     
         private void frmMain_Load(object sender, EventArgs e)
         {
             lbl_User.Text = $"Usuário: {usuario}";

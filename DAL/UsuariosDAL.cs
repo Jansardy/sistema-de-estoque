@@ -11,23 +11,21 @@ namespace Sistema_de_Estoque.DAL
 {
     public class UsuariosDAL
     {
-        private readonly string strConnection = "server=127.0.0.1;port=3306;User Id=root;database=estoquedb;password=J#nsen1804";
+        private readonly string strConnection = "server=localhost;port=3306;User Id=root;database=estoquedb;password=J#nsen1804";
 
         #region Login
-        public bool ValidarLogin(string usuario, string senha)
+        public (bool sucesso, string nome, string nivelAcesso) ValidarLogin(string usuario, string senha)
         {
-            const string query = "CALL sp_ValidarLogin(@p_Usuario, @p_Senha)";
-
             try
             {
                 using (MySqlConnection conexao = new MySqlConnection(strConnection))
                 {
                     conexao.Open();
-                    using (MySqlCommand cmd = new MySqlCommand(query, conexao))
+                    using (MySqlCommand cmd = new MySqlCommand("sp_ValidarLogin", conexao))
                     {
-
+                        cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@p_Usuario", usuario);
-                        cmd.Parameters.AddWithValue("@p_Senha", SecurityHelper.ComputeSha256Hash(senha));
+                        cmd.Parameters.AddWithValue("@p_Senha", senha);
 
                         using (MySqlDataReader reader = cmd.ExecuteReader())
                         {
@@ -35,7 +33,9 @@ namespace Sistema_de_Estoque.DAL
                             {
                                 if (reader["status"].ToString() == "SUCESSO")
                                 {
-                                    return true;
+                                    string nome = reader["Nome"].ToString();
+                                    string nivelAcesso = reader["NivelAcesso"].ToString();
+                                    return (true, nome, nivelAcesso);
                                 }
                             }
                         }
@@ -47,7 +47,7 @@ namespace Sistema_de_Estoque.DAL
                 throw new Exception("Erro no Login: " + ex.Message);
             }
 
-            return false;
+            return (false, "","");
         }
         #endregion
 
@@ -73,6 +73,7 @@ namespace Sistema_de_Estoque.DAL
             catch (Exception ex)
             {
                 throw new Exception("Erro ao inserir usuário: " + ex.Message);
+
             }
         }
         #endregion

@@ -37,11 +37,13 @@ namespace Sistema_de_Estoque.UI
 
             try
             {
-                if (userdal.ValidarLogin(txtBox_User.Text, txtBox_Pass.Text))
+                var (sucesso, nome, nivelAcesso) = userdal.ValidarLogin(txtBox_User.Text, txtBox_Pass.Text);
+
+                if (sucesso)
                 {
                     MessageBox.Show("Login realizado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Hide();
-                    frmMain main = new frmMain(txtBox_User.Text);
+                    frmMain main = new frmMain(nome, nivelAcesso);
                     main.Show();
                 }
                 else
