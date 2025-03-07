@@ -82,6 +82,12 @@
     <Compile Include="UI\Cadastros\frmUsuarios.Designer.cs">
       <DependentUpon>frmUsuarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Cadastros\UI.Funções\frmBuscarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Cadastros\UI.Funções\frmBuscarUsuario.Designer.cs">
+      <DependentUpon>frmBuscarUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Cadastros\frmUsuarios.resx">
       <DependentUpon>frmUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Cadastros\UI.Funções\frmBuscarUsuario.resx">
+      <DependentUpon>frmBuscarUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
@@ -202,5 +211,6 @@
   <ItemGroup>
     <None Include="Resources\icon-Cancelar.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
