@@ -64,7 +64,7 @@ namespace Sistema_de_Estoque.DAL
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("p_Nome", usuario.Nome);
                         cmd.Parameters.AddWithValue("p_Login", usuario.Login);
-                        cmd.Parameters.AddWithValue("p_Senha", SecurityHelper.GerarHashSHA256(usuario.Senha));
+                        cmd.Parameters.AddWithValue("p_Senha", usuario.Senha);
                         cmd.Parameters.AddWithValue("p_NivelAcesso", usuario.NivelAcesso);
                         cmd.ExecuteNonQuery();
                     }
@@ -142,7 +142,7 @@ namespace Sistema_de_Estoque.DAL
                         }
                         else
                         {
-                            cmd.Parameters.AddWithValue("p_Senha", DBNull.Value); // Não altera a senha
+                            cmd.Parameters.AddWithValue("p_Senha", DBNull.Value);
                         }
 
                         cmd.ExecuteNonQuery();

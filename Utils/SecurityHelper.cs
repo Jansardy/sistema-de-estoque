@@ -11,6 +11,7 @@ namespace Sistema_de_Estoque.Utils
     {
         public static string GerarHashSHA256(string senha)
         {
+            senha = senha.Trim();
             using (SHA256 sha256 = SHA256.Create())
             {
                 byte[] bytes = Encoding.UTF8.GetBytes(senha);

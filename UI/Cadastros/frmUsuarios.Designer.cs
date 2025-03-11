@@ -89,6 +89,7 @@
             this.btn_Deletar.Text = "Deletar";
             this.btn_Deletar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btn_Deletar.UseVisualStyleBackColor = true;
+            this.btn_Deletar.Click += new System.EventHandler(this.Deletar);
             // 
             // btn_Editar
             // 
@@ -102,6 +103,7 @@
             this.btn_Editar.Text = "Editar";
             this.btn_Editar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btn_Editar.UseVisualStyleBackColor = true;
+            this.btn_Editar.Click += new System.EventHandler(this.Editar);
             // 
             // btn_Procurar
             // 
@@ -159,6 +161,7 @@
             this.btn_Add.TabIndex = 1;
             this.btn_Add.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_Add.UseVisualStyleBackColor = true;
+            this.btn_Add.Visible = false;
             this.btn_Add.Click += new System.EventHandler(this.Adicionar_Incluir);
             // 
             // btn_Can
@@ -171,6 +174,7 @@
             this.btn_Can.TabIndex = 0;
             this.btn_Can.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_Can.UseVisualStyleBackColor = true;
+            this.btn_Can.Visible = false;
             this.btn_Can.Click += new System.EventHandler(this.Cancelar_Incluir);
             // 
             // label5

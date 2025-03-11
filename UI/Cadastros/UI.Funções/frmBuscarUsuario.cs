@@ -34,33 +34,46 @@ namespace Sistema_de_Estoque.UI.Cadastros.UI.Funções
 
             dgv_Resultados.Columns.Clear();
 
+            dgv_Resultados.Columns.Add("ID", "ID");
+            dgv_Resultados.Columns.Add("Nome", "Nome");
+            dgv_Resultados.Columns.Add("Login", "Login");
+            dgv_Resultados.Columns.Add("NivelAcesso", "Nível de Acesso");
+
+            dgv_Resultados.Columns["ID"].Width = 15;
+            dgv_Resultados.Columns["Nome"].Width = 70;
+            dgv_Resultados.Columns["Login"].Width = 50;
+            dgv_Resultados.Columns["NivelAcesso"].Width = 100;
+
             foreach (var usuario in usuarios)
             {
-                dgv_Resultados.Rows.Add(usuario.ID, usuario.Nome, usuario.Login, usuario.NivelAcesso);
+                dgv_Resultados.Rows.Add(usuario.ID, usuario.Nome, usuario.Login,usuario.NivelAcesso);
             }
 
             tabControl.SelectedTab = Page_Resultado;
         }
 
-        private void btnOK_Click(object sender, EventArgs e)
+        private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            // Verifica se o usuário selecionou algum item no DataGridView
             if (dgv_Resultados.SelectedRows.Count > 0)
             {
-                var usuarioSelecionado = dgv_Resultados.SelectedRows[0].DataBoundItem as Usuario;
-
-                // Passa os dados do usuário selecionado para os campos no frmUsuarios
-                frmUsuarios frmUsuario = Application.OpenForms.OfType<frmUsuarios>().FirstOrDefault();
-                if (frmUsuario != null)
+                Usuario usuarioSelecionado = new Usuario
                 {
-                    //frmUsuario.SetUsuarioSelecionado(usuarioSelecionado);
-                }
+                    ID = Convert.ToInt32(dgv_Resultados.SelectedRows[0].Cells["ID"].Value),
+                    Nome = dgv_Resultados.SelectedRows[0].Cells["Nome"].Value.ToString(),
+                    Login = dgv_Resultados.SelectedRows[0].Cells["Login"].Value.ToString(),
+                    NivelAcesso = dgv_Resultados.SelectedRows[0].Cells["NivelAcesso"].Value.ToString()
+                };
 
-                this.Close(); // Fecha o formulário de busca
+                frmUsuarios frmUsuarios = Application.OpenForms.OfType<frmUsuarios>().FirstOrDefault();
+                if (frmUsuarios != null)
+                {
+                    frmUsuarios.SetUsuarioSelecionado(usuarioSelecionado);
+                }
+                this.Close();
             }
             else
             {
-                MessageBox.Show("Selecione um usuário da lista.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Selecione um usuário da lista.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }
