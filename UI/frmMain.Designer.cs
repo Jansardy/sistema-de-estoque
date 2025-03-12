@@ -90,7 +90,7 @@
             // mnStrip
             // 
             this.mnStrip.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuBar;
-            this.mnStrip.BackColor = System.Drawing.Color.LightGray;
+            this.mnStrip.BackColor = System.Drawing.SystemColors.ControlLight;
             this.mnStrip.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mnStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cadastroToolStripMenuItem,
@@ -113,7 +113,8 @@
             this.fornecedorToolStripMenuItem,
             this.usuárioToolStripMenuItem});
             this.cadastroToolStripMenuItem.Name = "cadastroToolStripMenuItem";
-            this.cadastroToolStripMenuItem.Size = new System.Drawing.Size(78, 26);
+            this.cadastroToolStripMenuItem.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.cadastroToolStripMenuItem.Size = new System.Drawing.Size(90, 26);
             this.cadastroToolStripMenuItem.Text = "Cadastros";
             // 
             // produtosToolStripMenuItem
@@ -125,6 +126,7 @@
             this.produtosToolStripMenuItem.Name = "produtosToolStripMenuItem";
             this.produtosToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
             this.produtosToolStripMenuItem.Text = "Produtos";
+            this.produtosToolStripMenuItem.Click += new System.EventHandler(this.produtosToolStripMenuItem_Click);
             // 
             // fornecedorToolStripMenuItem
             // 
@@ -154,7 +156,8 @@
             this.saídaDeProdutosToolStripMenuItem});
             this.movimentaçõesToolStripMenuItem.Margin = new System.Windows.Forms.Padding(3);
             this.movimentaçõesToolStripMenuItem.Name = "movimentaçõesToolStripMenuItem";
-            this.movimentaçõesToolStripMenuItem.Size = new System.Drawing.Size(109, 20);
+            this.movimentaçõesToolStripMenuItem.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.movimentaçõesToolStripMenuItem.Size = new System.Drawing.Size(121, 20);
             this.movimentaçõesToolStripMenuItem.Text = "Movimentações";
             // 
             // entradaDeProdutosToolStripMenuItem
@@ -184,7 +187,8 @@
             this.históricoDeMovimentaçõesToolStripMenuItem});
             this.relatóriosToolStripMenuItem.Margin = new System.Windows.Forms.Padding(3);
             this.relatóriosToolStripMenuItem.Name = "relatóriosToolStripMenuItem";
-            this.relatóriosToolStripMenuItem.Size = new System.Drawing.Size(77, 20);
+            this.relatóriosToolStripMenuItem.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.relatóriosToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
             this.relatóriosToolStripMenuItem.Text = "Relatórios";
             // 
             // estoqueAtualToolStripMenuItem
@@ -214,7 +218,8 @@
             this.atualizarBancoDeDadosToolStripMenuItem});
             this.configuraçõesToolStripMenuItem.Margin = new System.Windows.Forms.Padding(3);
             this.configuraçõesToolStripMenuItem.Name = "configuraçõesToolStripMenuItem";
-            this.configuraçõesToolStripMenuItem.Size = new System.Drawing.Size(101, 20);
+            this.configuraçõesToolStripMenuItem.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.configuraçõesToolStripMenuItem.Size = new System.Drawing.Size(113, 20);
             this.configuraçõesToolStripMenuItem.Text = "Configurações";
             // 
             // alterarSenhaToolStripMenuItem

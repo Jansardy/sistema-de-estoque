@@ -14,6 +14,6 @@ namespace Sistema_de_Estoque.Entities
         public int Quantidade { get; set; }
         public decimal Preco { get; set; }
         public int FornecedorID { get; set; }
-        public Fornecedor Fornecedor { get; set; }
+
     }
 }

@@ -6,18 +6,20 @@ using System.Threading.Tasks;
 using Sistema_de_Estoque.Entities;
 using MySql.Data.MySqlClient;
 using System.Data;
+using System.Windows.Forms;
 
 namespace Sistema_de_Estoque.DAL
 {
     public class ProdutoDAL
     {
-        private readonly string strConnection = "server=127.0.0.1;port=3306;User Id=root;database=estoquedb;password=J#nsen1804";
+        public static string strConnection = "server=127.0.0.1;port=3306;User Id=root;database=estoquedb;password=J#nsen1804";
 
         #region Inserir
         public void InserirProduto(Produto produto)
         {
             try
             {
+                
                 using (MySqlConnection connection = new MySqlConnection(strConnection))
                 {
                     connection.Open();
@@ -132,5 +134,7 @@ namespace Sistema_de_Estoque.DAL
             }
         }
         #endregion
+
+
     }
 }
