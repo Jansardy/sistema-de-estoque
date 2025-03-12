@@ -82,7 +82,6 @@ namespace Sistema_de_Estoque.UI.Cadastros
             catch (Exception ex)
             {
                 MessageBox.Show("Erro ao inserir usuário. Por favor, tente novamente mais tarde.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Console.WriteLine("Erro ao inserir usuário: " + ex.Message);
             }
         }
 

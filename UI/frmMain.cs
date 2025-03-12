@@ -43,7 +43,13 @@ namespace Sistema_de_Estoque.UI
         private void usuárioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmUsuarios frmUsuarios = new frmUsuarios();
-            frmUsuarios.Show();
+            frmUsuarios.ShowDialog();
+        }
+
+        private void produtosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmProdutos frmProdutos = new frmProdutos();
+            frmProdutos.ShowDialog();
         }
     }
 }
