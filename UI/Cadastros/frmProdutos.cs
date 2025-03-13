@@ -3,8 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,7 +27,6 @@ namespace Sistema_de_Estoque.UI.Cadastros
         {
             CarregarFornecedores();
             CarregarCategoria();
-
         }
 
         private void btn_Inserir_Click(object sender, EventArgs e)
@@ -46,24 +45,19 @@ namespace Sistema_de_Estoque.UI.Cadastros
             TabControl_Produto.TabPages[1].Enabled = true;
         }
 
-
-        #region Metodos
+        #region Métodos
 
         #region Preço TxtBox
         private void txtBox_Preco_Leave(object sender, EventArgs e)
         {
-            string precoText = txtBox_Preco.Text;
-
-            precoText = precoText.Replace("R$", "").Trim();
-            precoText = precoText.Replace(",", ".");
-
-            if (Decimal.TryParse(precoText, out decimal preco))
+            if (decimal.TryParse(txtBox_Preco.Text, NumberStyles.Currency, CultureInfo.GetCultureInfo("pt-BR"), out decimal preco))
             {
-                txtBox_Preco.Text = preco.ToString("C2");
+                txtBox_Preco.Text = preco.ToString("F2", CultureInfo.GetCultureInfo("pt-BR"));
             }
             else
             {
-                MessageBox.Show("Valor Inválido.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Valor Inválido. Insira um valor numérico válido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtBox_Preco.Focus();
             }
         }
         #endregion
@@ -92,34 +86,24 @@ namespace Sistema_de_Estoque.UI.Cadastros
                             cbBox_Fornecedor.DataSource = new BindingSource(fornecedores, null);
                             cbBox_Fornecedor.DisplayMember = "Value";
                             cbBox_Fornecedor.ValueMember = "Key";
-
                         }
                     }
-
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Erro ao carregar fornecedores: " + ex.Message);
             }
-
         }
         #endregion
 
-        #region ComboBox Categori
+        #region ComboBox Categoria
         private void CarregarCategoria()
         {
             cbBox_Categoria.Items.Clear();
             try
             {
-                cbBox_Categoria.Items.Add("Alimentos");
-                cbBox_Categoria.Items.Add("Bebidas");
-                cbBox_Categoria.Items.Add("Eletrônicos");
-                cbBox_Categoria.Items.Add("Vestuário");
-                cbBox_Categoria.Items.Add("Limpeza");
-                cbBox_Categoria.Items.Add("Móveis");
-                cbBox_Categoria.Items.Add("Papelaria");
-
+                cbBox_Categoria.Items.AddRange(new string[] { "Alimentos", "Bebidas", "Eletrônicos", "Vestuário", "Limpeza", "Móveis", "Papelaria" });
                 cbBox_Categoria.SelectedIndex = 0;
             }
             catch (Exception ex)
@@ -129,15 +113,15 @@ namespace Sistema_de_Estoque.UI.Cadastros
         }
         #endregion
 
-        #region inserirAdd
+        #region Inserir Produto
         private void InserirAdd(object sender, EventArgs e)
         {
+            txtBox_ID.Enabled = false;
 
-            if (cbBox_Fornecedor.SelectedItem != null && cbBox_Categoria.SelectedIndex != null)
+            if (cbBox_Fornecedor.SelectedItem != null && cbBox_Categoria.SelectedIndex >= 0)
             {
-
                 if (string.IsNullOrEmpty(txtBox_Nome.Text) ||
-                    string.IsNullOrEmpty(txtBox_Quantidade.Text) || 
+                    string.IsNullOrEmpty(txtBox_Quantidade.Text) ||
                     string.IsNullOrEmpty(txtBox_Preco.Text))
                 {
                     MessageBox.Show("Um campo ou mais campos não foram preenchidos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -147,6 +131,7 @@ namespace Sistema_de_Estoque.UI.Cadastros
                 try
                 {
                     int fornecedorID = (int)cbBox_Fornecedor.SelectedValue;
+                    decimal preco = decimal.Parse(txtBox_Preco.Text, CultureInfo.GetCultureInfo("pt-BR"));
 
                     Produto produto = new Produto
                     {
@@ -154,7 +139,7 @@ namespace Sistema_de_Estoque.UI.Cadastros
                         Categoria = cbBox_Categoria.Text,
                         FornecedorID = fornecedorID,
                         Quantidade = Convert.ToInt32(txtBox_Quantidade.Text),
-                        Preco = Convert.ToDecimal(txtBox_Preco.Text)
+                        Preco = preco
                     };
 
                     produtoDAL.InserirProduto(produto);
@@ -167,7 +152,6 @@ namespace Sistema_de_Estoque.UI.Cadastros
                     cbBox_Fornecedor.SelectedIndex = -1;
 
                     TabControl_Produto.Enabled = false;
-
                 }
                 catch (Exception ex)
                 {
@@ -181,6 +165,12 @@ namespace Sistema_de_Estoque.UI.Cadastros
         }
         #endregion
 
+        #region Procurar Produto
+        private void Procurar()
+        {
+
+        }
+        #endregion
 
         #endregion
     }
