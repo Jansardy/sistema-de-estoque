@@ -200,7 +200,7 @@
             this.dgv_Resultados.AllowUserToDeleteRows = false;
             this.dgv_Resultados.AllowUserToOrderColumns = true;
             this.dgv_Resultados.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgv_Resultados.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dgv_Resultados.BackgroundColor = System.Drawing.SystemColors.HighlightText;
             this.dgv_Resultados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_Resultados.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_Resultados.Location = new System.Drawing.Point(3, 3);
@@ -253,7 +253,7 @@
             this.Name = "frmBuscarUsuario";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Procurar";
+            this.Text = "Procurar Usuários";
             this.tabControl.ResumeLayout(false);
             this.Page_Procurar.ResumeLayout(false);
             this.Page_Procurar.PerformLayout();
