@@ -12,14 +12,14 @@ namespace Sistema_de_Estoque.DAL
 {
     public class ProdutoDAL
     {
-        public static string strConnection = "server=127.0.0.1;port=3306;User Id=root;database=estoquedb;password=J#nsen1804";
+        public static string strConnection = "server=localhost;port=3306;User Id=root;database=estoquedb;password=J#nsen1804";
 
         #region Inserir
         public void InserirProduto(Produto produto)
         {
             try
             {
-                
+
                 using (MySqlConnection connection = new MySqlConnection(strConnection))
                 {
                     connection.Open();
@@ -79,25 +79,32 @@ namespace Sistema_de_Estoque.DAL
                 using (MySqlConnection connection = new MySqlConnection(strConnection))
                 {
                     connection.Open();
+                    Console.WriteLine("Conexão aberta!");
+
                     using (MySqlCommand cmd = new MySqlCommand("BuscarProdutos", connection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("p_Nome", nome ?? string.Empty);
-                        cmd.Parameters.AddWithValue("p_Categoria", categoria ?? string.Empty);
+                        cmd.Parameters.AddWithValue("p_Categoria", categoria == "-1" ? string.Empty : categoria); ;
+
+                        Console.WriteLine($"Chamando procedure com Nome: '{nome}' e Categoria: '{categoria}'");
 
                         using (MySqlDataReader reader = cmd.ExecuteReader())
                         {
                             while (reader.Read())
                             {
-                                produtos.Add(new Produto
+                                Produto produto = new Produto
                                 {
-                                    ID = reader.GetInt32(reader.GetOrdinal("ID")),
-                                    Nome = reader.GetString(reader.GetOrdinal("Nome")),
-                                    Categoria = reader.IsDBNull(reader.GetOrdinal("Categoria")) ? null : reader.GetString(reader.GetOrdinal("Categoria")),
-                                    Quantidade = reader.GetInt32(reader.GetOrdinal("Quantidade")),
-                                    Preco = reader.GetDecimal(reader.GetOrdinal("Preco")),
-                                    FornecedorID = reader.IsDBNull(reader.GetOrdinal("FornecedorID")) ? 0 : reader.GetInt32(reader.GetOrdinal("FornecedorID"))
-                                });
+                                    ID = reader.GetInt32("ID"),
+                                    Nome = reader.GetString("Nome"),
+                                    Categoria = reader.GetString("Categoria"),
+                                    Quantidade = reader.GetInt32("Quantidade"),
+                                    Preco = reader.GetDecimal("Preco"),
+                                    FornecedorID = reader.GetInt32("FornecedorID")
+                                };
+
+                                produtos.Add(produto);
+                                Console.WriteLine($"Produto encontrado: {produto.Nome}");
                             }
                         }
                     }
