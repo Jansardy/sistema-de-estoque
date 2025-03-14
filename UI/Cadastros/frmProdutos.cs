@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sistema_de_Estoque.DAL;
 using Sistema_de_Estoque.Entities;
+using Sistema_de_Estoque.UI.Cadastros.UI.Funções;
 
 namespace Sistema_de_Estoque.UI.Cadastros
 {
@@ -25,16 +26,18 @@ namespace Sistema_de_Estoque.UI.Cadastros
 
         private void frmProdutos_Load(object sender, EventArgs e)
         {
-            CarregarFornecedores();
-            CarregarCategoria();
+            CarregarFornecedores(cbBox_Fornecedor);
+            CarregarCategoria(cbBox_Categoria);
         }
 
         private void btn_Inserir_Click(object sender, EventArgs e)
         {
             TabControl_Produto.Enabled = true;
             TabControl_Produto.SelectedTab = Page_Inserir;
+            Page_Inserir.Text = "Inserir";
             TabControl_Produto.TabPages[1].Enabled = false;
             TabControl_Produto.TabPages[0].Enabled = true;
+            btn_Procurar.Enabled = false;
         }
 
         private void btn_Procurar_Click(object sender, EventArgs e)
@@ -43,6 +46,17 @@ namespace Sistema_de_Estoque.UI.Cadastros
             TabControl_Produto.SelectedTab = Page_Procurar;
             TabControl_Produto.TabPages[0].Enabled = false;
             TabControl_Produto.TabPages[1].Enabled = true;
+            frmBuscarProduto frmBuscarProduto = new frmBuscarProduto();
+            frmBuscarProduto.ShowDialog();
+        }
+
+        private void btn_Editar_Click(object sender, EventArgs e)
+        {
+            txtBox_pNome.Enabled = true;
+            cbBox_pCategoria.Enabled = true;
+            cbBox_pFornecedor.Enabled = true;
+            txtBox_pPreco.Enabled = true;
+            txtBox_pQuantidade.Enabled = true;
         }
 
         #region Métodos
@@ -63,9 +77,9 @@ namespace Sistema_de_Estoque.UI.Cadastros
         #endregion
 
         #region ComboBox FornecedorID
-        private void CarregarFornecedores()
+        private void CarregarFornecedores(ComboBox comboBox)
         {
-            cbBox_Fornecedor.Items.Clear();
+            comboBox.SelectedIndex = -1;
             try
             {
                 using (MySqlConnection connection = new MySqlConnection(ProdutoDAL.strConnection))
@@ -83,9 +97,9 @@ namespace Sistema_de_Estoque.UI.Cadastros
                                 fornecedores.Add(reader.GetInt32("ID"), reader.GetString("Nome"));
                             }
 
-                            cbBox_Fornecedor.DataSource = new BindingSource(fornecedores, null);
-                            cbBox_Fornecedor.DisplayMember = "Value";
-                            cbBox_Fornecedor.ValueMember = "Key";
+                            comboBox.DataSource = new BindingSource(fornecedores, null);
+                            comboBox.DisplayMember = "Value";
+                            comboBox.ValueMember = "Key";
                         }
                     }
                 }
@@ -98,13 +112,13 @@ namespace Sistema_de_Estoque.UI.Cadastros
         #endregion
 
         #region ComboBox Categoria
-        private void CarregarCategoria()
+        private void CarregarCategoria(ComboBox comboBox)
         {
-            cbBox_Categoria.Items.Clear();
+            comboBox.SelectedIndex = -1;
             try
             {
-                cbBox_Categoria.Items.AddRange(new string[] { "Alimentos", "Bebidas", "Eletrônicos", "Vestuário", "Limpeza", "Móveis", "Papelaria" });
-                cbBox_Categoria.SelectedIndex = 0;
+                comboBox.Items.AddRange(new string[] { "Alimentos", "Bebidas", "Eletrônicos", "Vestuário", "Limpeza", "Móveis", "Papelaria" });
+                comboBox.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
@@ -155,7 +169,7 @@ namespace Sistema_de_Estoque.UI.Cadastros
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Erro ao inserir o produto. Por favor, tente novamente mais tarde.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Erro ao inserir o produto. Por favor, tente novamente mais tarde." + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -166,10 +180,80 @@ namespace Sistema_de_Estoque.UI.Cadastros
         #endregion
 
         #region Procurar Produto
-        private void Procurar()
+        public void SetProdutoSelecionado(Produto produtoSelecionado)
+        {
+            TabControl_Produto.TabPages[1].Enabled = true;
+
+            CarregarFornecedores(cbBox_pFornecedor);
+            CarregarCategoria(cbBox_pCategoria);
+
+            txtBox_pID.Text = produtoSelecionado.ID.ToString();
+            txtBox_pNome.Text = produtoSelecionado.Nome;
+            txtBox_pQuantidade.Text = produtoSelecionado.Quantidade.ToString();
+            txtBox_pPreco.Text = produtoSelecionado.Preco.ToString("F2", CultureInfo.GetCultureInfo("pt-BR"));
+
+            if (cbBox_pCategoria.Items.Contains(produtoSelecionado.Categoria))
+            {
+                cbBox_pCategoria.SelectedItem = produtoSelecionado.Categoria;
+            }
+            else
+            {
+                MessageBox.Show($"Categoria '{produtoSelecionado.Categoria}' não encontrada na lista!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            if (cbBox_pFornecedor.Items.Cast<KeyValuePair<int, string>>().Any(f => f.Key == produtoSelecionado.FornecedorID))
+            {
+                cbBox_pFornecedor.SelectedValue = produtoSelecionado.FornecedorID;
+            }
+            else
+            {
+                MessageBox.Show($"Fornecedor ID '{produtoSelecionado.FornecedorID}' não encontrado na lista!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            btn_Inserir.Enabled = false;
+            btn_Editar.Enabled = true;
+            btn_Deletar.Enabled = true;
+
+
+        }
+        #endregion
+
+        #region Editar Produto
+        private void btn_EditaAdd_Click(object sender, EventArgs e)
         {
 
         }
+        #endregion
+
+        #region Cancelar
+        private void btn_Can_Click(object sender, EventArgs e)
+        {
+            txtBox_ID.Clear();
+            txtBox_Nome.Clear();
+            cbBox_Categoria.SelectedIndex = -1;
+            cbBox_Fornecedor.SelectedIndex = -1;
+            txtBox_Preco.Clear();
+            txtBox_Quantidade.Clear();
+
+            TabControl_Produto.TabPages[0].Enabled = false;
+            btn_Procurar.Enabled = true;
+        }
+
+        private void btn_can2_Click(object sender, EventArgs e)
+        {
+            txtBox_pNome.Clear();
+            cbBox_pCategoria.SelectedIndex = -1;
+            cbBox_pFornecedor.SelectedIndex = -1;
+            txtBox_pPreco.Clear();
+            txtBox_pQuantidade.Clear();
+
+            TabControl_Produto.TabPages[1].Enabled = false;
+            btn_Inserir.Enabled = true;
+            btn_Procurar.Enabled = true;
+            btn_Editar.Enabled = false;
+            btn_Deletar.Enabled = false;
+        }
+
         #endregion
 
         #endregion
