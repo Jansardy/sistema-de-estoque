@@ -97,6 +97,7 @@
             this.btn_Deletar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_Deletar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btn_Deletar.UseVisualStyleBackColor = true;
+            this.btn_Deletar.Click += new System.EventHandler(this.btn_Deletar_Click);
             // 
             // btn_Editar
             // 
