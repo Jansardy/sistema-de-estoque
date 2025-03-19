@@ -107,7 +107,7 @@ namespace Sistema_de_Estoque.UI.Cadastros.UI.Funções
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao carregar Categorias: " + ex.Message);
+                MessageBox.Show($"Erro ao carregar Categorias.\n\nDetalhes técnicos: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
