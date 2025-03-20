@@ -30,17 +30,6 @@ namespace Sistema_de_Estoque.UI.Cadastros
             CarregarCategoria(cbBox_Categoria);
         }
 
-        private void btn_Procurar_Click(object sender, EventArgs e)
-        {
-            TabControl_Produto.Enabled = true;
-            TabControl_Produto.SelectedTab = Page_Procurar;
-            TabControl_Produto.TabPages[0].Enabled = false;
-            TabControl_Produto.TabPages[1].Enabled = true;
-            frmBuscarProduto frmBuscarProduto = new frmBuscarProduto();
-            frmBuscarProduto.ShowDialog();
-        }
-
-
 
         #region Métodos
 
@@ -178,6 +167,16 @@ namespace Sistema_de_Estoque.UI.Cadastros
         #endregion
 
         #region Procurar Produto
+        private void btn_Procurar_Click(object sender, EventArgs e)
+        {
+            TabControl_Produto.Enabled = true;
+            TabControl_Produto.SelectedTab = Page_Procurar;
+            TabControl_Produto.TabPages[0].Enabled = false;
+            TabControl_Produto.TabPages[1].Enabled = true;
+            frmBuscarProduto frmBuscarProduto = new frmBuscarProduto();
+            frmBuscarProduto.ShowDialog();
+        }
+
         public void SetProdutoSelecionado(Produto produtoSelecionado)
         {
             TabControl_Produto.TabPages[1].Enabled = true;
@@ -334,6 +333,7 @@ namespace Sistema_de_Estoque.UI.Cadastros
             txtBox_Quantidade.Clear();
 
             TabControl_Produto.TabPages[0].Enabled = false;
+            Page_Inserir.Text = "";
             btn_Procurar.Enabled = true;
         }
 
@@ -346,6 +346,7 @@ namespace Sistema_de_Estoque.UI.Cadastros
             txtBox_pQuantidade.Clear();
 
             TabControl_Produto.TabPages[1].Enabled = false;
+            Page_Procurar.Text = "";
             btn_Inserir.Enabled = true;
             btn_Procurar.Enabled = true;
             btn_Editar.Enabled = false;

@@ -51,5 +51,11 @@ namespace Sistema_de_Estoque.UI
             frmProdutos frmProdutos = new frmProdutos();
             frmProdutos.ShowDialog();
         }
+
+        private void fornecedorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmFornecedores frmFornecedores = new frmFornecedores();
+            frmFornecedores.ShowDialog();
+        }
     }
 }
