@@ -42,7 +42,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtBox_Nome = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBox_ID = new System.Windows.Forms.TextBox();
             this.maskTxtBox_Telefone = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.Page_Proc = new System.Windows.Forms.TabPage();
@@ -98,6 +98,7 @@
             this.btn_Inserir.Text = "Inserir";
             this.btn_Inserir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btn_Inserir.UseVisualStyleBackColor = true;
+            this.btn_Inserir.Click += new System.EventHandler(this.btn_Inserir_Click);
             // 
             // btn_Editar
             // 
@@ -148,7 +149,7 @@
             this.Page_Inserir.Controls.Add(this.label3);
             this.Page_Inserir.Controls.Add(this.txtBox_Nome);
             this.Page_Inserir.Controls.Add(this.label2);
-            this.Page_Inserir.Controls.Add(this.textBox1);
+            this.Page_Inserir.Controls.Add(this.txtBox_ID);
             this.Page_Inserir.Controls.Add(this.maskTxtBox_Telefone);
             this.Page_Inserir.Controls.Add(this.label1);
             this.Page_Inserir.Location = new System.Drawing.Point(4, 22);
@@ -176,6 +177,7 @@
             this.btn_AddInserir.TabIndex = 8;
             this.btn_AddInserir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_AddInserir.UseVisualStyleBackColor = true;
+            this.btn_AddInserir.Click += new System.EventHandler(this.btn_AddInserir_Click);
             // 
             // label4
             // 
@@ -223,19 +225,20 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Nome";
             // 
-            // textBox1
+            // txtBox_ID
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.textBox1.Location = new System.Drawing.Point(20, 32);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(78, 22);
-            this.textBox1.TabIndex = 2;
+            this.txtBox_ID.Enabled = false;
+            this.txtBox_ID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.txtBox_ID.Location = new System.Drawing.Point(20, 32);
+            this.txtBox_ID.Name = "txtBox_ID";
+            this.txtBox_ID.Size = new System.Drawing.Size(78, 22);
+            this.txtBox_ID.TabIndex = 2;
             // 
             // maskTxtBox_Telefone
             // 
             this.maskTxtBox_Telefone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
             this.maskTxtBox_Telefone.Location = new System.Drawing.Point(20, 94);
-            this.maskTxtBox_Telefone.Mask = "(99) 9999-9999";
+            this.maskTxtBox_Telefone.Mask = "(99) 99999-9999";
             this.maskTxtBox_Telefone.Name = "maskTxtBox_Telefone";
             this.maskTxtBox_Telefone.Size = new System.Drawing.Size(110, 22);
             this.maskTxtBox_Telefone.TabIndex = 1;
@@ -398,7 +401,7 @@
         private System.Windows.Forms.TabPage Page_Proc;
         private System.Windows.Forms.MaskedTextBox maskTxtBox_Telefone;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtBox_ID;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtBox_Nome;
         private System.Windows.Forms.Label label2;
