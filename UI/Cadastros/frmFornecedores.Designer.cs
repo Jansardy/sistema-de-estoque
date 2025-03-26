@@ -86,6 +86,7 @@
             this.btn_Deletar.Text = "Deletar";
             this.btn_Deletar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btn_Deletar.UseVisualStyleBackColor = true;
+            this.btn_Deletar.Click += new System.EventHandler(this.btn_Deletar_Click);
             // 
             // btn_Inserir
             // 
@@ -112,6 +113,7 @@
             this.btn_Editar.Text = "Editar";
             this.btn_Editar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btn_Editar.UseVisualStyleBackColor = true;
+            this.btn_Editar.Click += new System.EventHandler(this.btn_Editar_Click);
             // 
             // btn_Procurar
             // 
@@ -126,6 +128,7 @@
             this.btn_Procurar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_Procurar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btn_Procurar.UseVisualStyleBackColor = true;
+            this.btn_Procurar.Click += new System.EventHandler(this.btn_Procurar_Click);
             // 
             // TabControl_Fornecedores
             // 
@@ -157,7 +160,6 @@
             this.Page_Inserir.Padding = new System.Windows.Forms.Padding(3);
             this.Page_Inserir.Size = new System.Drawing.Size(546, 219);
             this.Page_Inserir.TabIndex = 0;
-            this.Page_Inserir.Text = "Inserir";
             // 
             // btn_CanInserir
             // 
@@ -167,6 +169,7 @@
             this.btn_CanInserir.Size = new System.Drawing.Size(40, 40);
             this.btn_CanInserir.TabIndex = 9;
             this.btn_CanInserir.UseVisualStyleBackColor = true;
+            this.btn_CanInserir.Click += new System.EventHandler(this.CanInserir);
             // 
             // btn_AddInserir
             // 
@@ -271,7 +274,6 @@
             this.Page_Proc.Padding = new System.Windows.Forms.Padding(3);
             this.Page_Proc.Size = new System.Drawing.Size(546, 219);
             this.Page_Proc.TabIndex = 1;
-            this.Page_Proc.Text = "proc";
             // 
             // btn_CanProc
             // 
@@ -281,6 +283,7 @@
             this.btn_CanProc.Size = new System.Drawing.Size(40, 40);
             this.btn_CanProc.TabIndex = 19;
             this.btn_CanProc.UseVisualStyleBackColor = true;
+            this.btn_CanProc.Click += new System.EventHandler(this.btn_CanProc_Click);
             // 
             // btn_AddProc
             // 
@@ -290,6 +293,7 @@
             this.btn_AddProc.Size = new System.Drawing.Size(40, 40);
             this.btn_AddProc.TabIndex = 18;
             this.btn_AddProc.UseVisualStyleBackColor = true;
+            this.btn_AddProc.Click += new System.EventHandler(this.btn_AddProc_Click);
             // 
             // label5
             // 
