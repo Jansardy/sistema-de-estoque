@@ -51,9 +51,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\FornecedorDAL.cs" />
+    <Compile Include="DAL\MovimentacaoDAL.cs" />
     <Compile Include="DAL\ProdutoDAL.cs" />
     <Compile Include="DAL\UsuariosDAL.cs" />
     <Compile Include="Entities\Fornecedor.cs" />
+    <Compile Include="Entities\MovimentacaoEstoque.cs" />
     <Compile Include="Entities\Produto.cs" />
     <Compile Include="Entities\Usuario.cs" />
     <Compile Include="Start.cs">
