@@ -124,7 +124,7 @@
             this.produtosToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.produtosToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.produtosToolStripMenuItem.Name = "produtosToolStripMenuItem";
-            this.produtosToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.produtosToolStripMenuItem.Size = new System.Drawing.Size(189, 38);
             this.produtosToolStripMenuItem.Text = "Produtos";
             this.produtosToolStripMenuItem.Click += new System.EventHandler(this.produtosToolStripMenuItem_Click);
             // 
@@ -135,7 +135,7 @@
             this.fornecedorToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.fornecedorToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.fornecedorToolStripMenuItem.Name = "fornecedorToolStripMenuItem";
-            this.fornecedorToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.fornecedorToolStripMenuItem.Size = new System.Drawing.Size(189, 38);
             this.fornecedorToolStripMenuItem.Text = "Fornecedores";
             this.fornecedorToolStripMenuItem.Click += new System.EventHandler(this.fornecedorToolStripMenuItem_Click);
             // 
@@ -146,7 +146,7 @@
             this.usuárioToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.usuárioToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.usuárioToolStripMenuItem.Name = "usuárioToolStripMenuItem";
-            this.usuárioToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.usuárioToolStripMenuItem.Size = new System.Drawing.Size(189, 38);
             this.usuárioToolStripMenuItem.Text = "Usuários";
             this.usuárioToolStripMenuItem.Click += new System.EventHandler(this.usuárioToolStripMenuItem_Click);
             // 
@@ -170,6 +170,7 @@
             this.entradaDeProdutosToolStripMenuItem.Name = "entradaDeProdutosToolStripMenuItem";
             this.entradaDeProdutosToolStripMenuItem.Size = new System.Drawing.Size(233, 38);
             this.entradaDeProdutosToolStripMenuItem.Text = "Entrada de produtos";
+            this.entradaDeProdutosToolStripMenuItem.Click += new System.EventHandler(this.entradaDeProdutosToolStripMenuItem_Click);
             // 
             // saídaDeProdutosToolStripMenuItem
             // 
@@ -180,6 +181,7 @@
             this.saídaDeProdutosToolStripMenuItem.Name = "saídaDeProdutosToolStripMenuItem";
             this.saídaDeProdutosToolStripMenuItem.Size = new System.Drawing.Size(233, 38);
             this.saídaDeProdutosToolStripMenuItem.Text = "Saída de produtos";
+            this.saídaDeProdutosToolStripMenuItem.Click += new System.EventHandler(this.saídaDeProdutosToolStripMenuItem_Click);
             // 
             // relatóriosToolStripMenuItem
             // 

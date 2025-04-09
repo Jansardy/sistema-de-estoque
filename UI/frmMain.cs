@@ -1,5 +1,6 @@
 ﻿using Sistema_de_Estoque.Entities;
 using Sistema_de_Estoque.UI.Cadastros;
+using Sistema_de_Estoque.UI.Movimentações;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,6 +27,8 @@ namespace Sistema_de_Estoque.UI
                 usuárioToolStripMenuItem.Enabled = false;
                 fornecedorToolStripMenuItem.Enabled = false;
                 atualizarBancoDeDadosToolStripMenuItem.Enabled = false;
+                saídaDeProdutosToolStripMenuItem.Enabled = true;
+                entradaDeProdutosToolStripMenuItem.Enabled = true;
             }
         }
      
@@ -56,6 +59,18 @@ namespace Sistema_de_Estoque.UI
         {
             frmFornecedores frmFornecedores = new frmFornecedores();
             frmFornecedores.ShowDialog();
+        }
+
+        private void entradaDeProdutosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmEntradaMove frmEntrada = new frmEntradaMove();
+            frmEntrada.ShowDialog();
+        }
+
+        private void saídaDeProdutosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmSaidaMove frmSaida = new frmSaidaMove();
+            frmSaida.ShowDialog();
         }
     }
 }
