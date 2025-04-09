@@ -127,8 +127,14 @@
   <data name="logo_User" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logo_User.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ico-MoveCan2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ico-MoveCan2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icon-entrada" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon-entrada.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logo_Login" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logo_Login.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icon-saida" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon-saida.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -139,8 +145,8 @@
   <data name="icon-produto" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon-produto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icon_addUser" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_addUser.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icon-Cancelar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon-Cancelar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Configurando_Sistema" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Configurando_Sistema.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -151,34 +157,43 @@
   <data name="icon-fluxo-caixa" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon-fluxo-caixa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ico-MoveCan" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ico-MoveCan.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icon-procUser" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon-procUser.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icon-fornecedor" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon-fornecedor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="2161" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\2161.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icon-editUser" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon-editUser.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="logo_pass" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logo_pass.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="logo_Login" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logo_Login.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="carregando_DB" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\carregando_DB.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icon-user" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon-user.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icon-add" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon-add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icon-Cancelar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon-Cancelar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ico-lupa" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ico-lupa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon-editUser" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon-editUser.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon-user" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon-user.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logo_pass" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logo_pass.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ico-MoveCan21" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ico-MoveCan21.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="2161" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\2161.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon-fornecedor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon-fornecedor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="carregando_DB" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\carregando_DB.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_addUser" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_addUser.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ico-MoveNovo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ico-MoveNovo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

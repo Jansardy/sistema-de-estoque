@@ -114,6 +114,18 @@
     <Compile Include="UI\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Movimentações\frmEntradaMove.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Movimentações\frmEntradaMove.Designer.cs">
+      <DependentUpon>frmEntradaMove.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Movimentações\frmSaidaMove.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Movimentações\frmSaidaMove.Designer.cs">
+      <DependentUpon>frmSaidaMove.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utils\SecurityHelper.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -151,6 +163,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Movimentações\frmEntradaMove.resx">
+      <DependentUpon>frmEntradaMove.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -231,6 +246,20 @@
   <ItemGroup>
     <None Include="Resources\icon-Cancelar.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\ico-lupa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ico-MoveCan.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ico-MoveCan2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ico-MoveCan21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ico-MoveNovo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
