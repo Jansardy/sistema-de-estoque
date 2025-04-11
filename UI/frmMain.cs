@@ -63,7 +63,7 @@ namespace Sistema_de_Estoque.UI
 
         private void entradaDeProdutosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmEntradaMove frmEntrada = new frmEntradaMove();
+            frmMovimentacao frmEntrada = new frmMovimentacao();
             frmEntrada.ShowDialog();
         }
 

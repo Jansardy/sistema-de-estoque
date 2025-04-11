@@ -114,11 +114,11 @@
     <Compile Include="UI\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Movimentações\frmEntradaMove.cs">
+    <Compile Include="UI\Movimentações\frmMovimentacao.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Movimentações\frmEntradaMove.Designer.cs">
-      <DependentUpon>frmEntradaMove.cs</DependentUpon>
+    <Compile Include="UI\Movimentações\frmMovimentacao.Designer.cs">
+      <DependentUpon>frmMovimentacao.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Movimentações\frmSaidaMove.cs">
       <SubType>Form</SubType>
@@ -164,8 +164,8 @@
     <EmbeddedResource Include="UI\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Movimentações\frmEntradaMove.resx">
-      <DependentUpon>frmEntradaMove.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Movimentações\frmMovimentacao.resx">
+      <DependentUpon>frmMovimentacao.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

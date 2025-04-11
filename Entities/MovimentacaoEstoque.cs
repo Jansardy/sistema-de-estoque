@@ -10,6 +10,7 @@ namespace Sistema_de_Estoque.Entities
     {
         public int Id { get; set; }
         public int ProdutoId { get; set; }
+        public int Quantidade { get; set; }
         public string Tipo { get; set; }
         public DateTime DataMovimentacao { get; set; }
         public int UsuarioId { get; set; }
