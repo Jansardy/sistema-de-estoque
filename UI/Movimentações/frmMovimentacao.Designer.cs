@@ -160,7 +160,17 @@
             this.CB_Motivos.Enabled = false;
             this.CB_Motivos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
             this.CB_Motivos.FormattingEnabled = true;
-            this.CB_Motivos.Location = new System.Drawing.Point(13, 239);
+            this.CB_Motivos.Items.AddRange(new object[] {
+            "001 - Venda",
+            "002 - Devolução ao fornecedor",
+            "003 - Vencimento",
+            "004 - Quebra/Avaria",
+            "005 - Uso interno",
+            "006 - Roubo/Furto",
+            "007 - Amostra grátis",
+            "008 - Doação",
+            "009 - Transferência"});
+            this.CB_Motivos.Location = new System.Drawing.Point(13, 209);
             this.CB_Motivos.Name = "CB_Motivos";
             this.CB_Motivos.Size = new System.Drawing.Size(156, 24);
             this.CB_Motivos.TabIndex = 11;
@@ -168,9 +178,9 @@
             // richTxtBox_Motivos
             // 
             this.richTxtBox_Motivos.Enabled = false;
-            this.richTxtBox_Motivos.Location = new System.Drawing.Point(13, 266);
+            this.richTxtBox_Motivos.Location = new System.Drawing.Point(13, 239);
             this.richTxtBox_Motivos.Name = "richTxtBox_Motivos";
-            this.richTxtBox_Motivos.Size = new System.Drawing.Size(253, 96);
+            this.richTxtBox_Motivos.Size = new System.Drawing.Size(253, 123);
             this.richTxtBox_Motivos.TabIndex = 12;
             this.richTxtBox_Motivos.Text = "";
             // 
@@ -228,7 +238,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.label6.Location = new System.Drawing.Point(10, 220);
+            this.label6.Location = new System.Drawing.Point(10, 190);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(47, 16);
             this.label6.TabIndex = 19;
@@ -243,6 +253,7 @@
             this.btn_BuscarFornecedor.Size = new System.Drawing.Size(25, 25);
             this.btn_BuscarFornecedor.TabIndex = 10;
             this.btn_BuscarFornecedor.UseVisualStyleBackColor = true;
+            this.btn_BuscarFornecedor.Click += new System.EventHandler(this.btn_BuscarFornecedor_Click);
             // 
             // btn_BuscarUsuario
             // 
@@ -253,6 +264,7 @@
             this.btn_BuscarUsuario.Size = new System.Drawing.Size(25, 25);
             this.btn_BuscarUsuario.TabIndex = 8;
             this.btn_BuscarUsuario.UseVisualStyleBackColor = true;
+            this.btn_BuscarUsuario.Click += new System.EventHandler(this.btn_BuscarUsuario_Click);
             // 
             // btn_BuscarProduto
             // 
@@ -263,6 +275,7 @@
             this.btn_BuscarProduto.Size = new System.Drawing.Size(25, 25);
             this.btn_BuscarProduto.TabIndex = 4;
             this.btn_BuscarProduto.UseVisualStyleBackColor = true;
+            this.btn_BuscarProduto.Click += new System.EventHandler(this.btn_BuscarProduto_Click);
             // 
             // numUpDown_Quantidade
             // 
