@@ -1,19 +1,14 @@
 ﻿using Sistema_de_Estoque.Entities;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sistema_de_Estoque.DAL;
+using Sistema_de_Estoque.UI.Movimentações.UI.Funções;
 
 namespace Sistema_de_Estoque.UI.Movimentações
 {
     public partial class frmMovimentacao : Form
     {
+
         MovimentacaoDAL movimentacaoDAL = new MovimentacaoDAL();
         public frmMovimentacao()
         {
@@ -48,12 +43,45 @@ namespace Sistema_de_Estoque.UI.Movimentações
             }
         }
 
+        private void btn_BuscarFornecedor_Click(object sender, EventArgs e)
+        {
+            frmBuscarFull frmBuscar = new frmBuscarFull("Fornecedor");
+            frmBuscar.ShowDialog();
+        }
+
+        private void btn_BuscarProduto_Click(object sender, EventArgs e)
+        {
+            frmBuscarFull frmBuscar = new frmBuscarFull("Produto");
+            frmBuscar.ShowDialog();
+        }
+
+        private void btn_BuscarUsuario_Click(object sender, EventArgs e)
+        {
+            frmBuscarFull frmBuscar = new frmBuscarFull("Usuário");
+            frmBuscar.ShowDialog();
+        }
+
+        public void SetFornecedorSelecionado(int fornecedorSelecionado)
+        {
+            txtBox_Fornecedor.Text = Convert.ToString(fornecedorSelecionado);
+        }
+
+        public void SetUsuarioSelecionado(int usuarioSelecionado)
+        {
+            txtBox_Usuário.Text = Convert.ToString(usuarioSelecionado);
+        }
+
+        public void SetProdutoSelecionado(int produtoSeleciona)
+        {
+            txtBox_Produto.Text = Convert.ToString(produtoSeleciona);
+        }
 
         private void Entrada_Saida(object sender, EventArgs e)
         {
             try
             {
-                int movimento = CB_Movimentos.SelectedIndex;
+                string motivoSelecionado = CB_Motivos.Text;
+                string motivolimpo = motivoSelecionado.Substring(6);
                 DateTime dataSelecionada = monthCalendar1.SelectionStart;
 
                 if (string.IsNullOrWhiteSpace(txtBox_Produto.Text) ||
@@ -75,14 +103,14 @@ namespace Sistema_de_Estoque.UI.Movimentações
                     FornecedorId = Convert.ToInt32(txtBox_Fornecedor.Text)
                 };
 
-                if (movimento == 0) //Entrada
+                if (CB_Movimentos.SelectedIndex == 0)
                 {
                     movimentacaoDAL.EntradaEstoque(estoque);
                     MessageBox.Show("Você registrou uma entrada!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
-                else if (movimento == 1) //Saída
+                else if (CB_Movimentos.SelectedIndex == 1)
                 {
-                    movimentacaoDAL.SaidaEstoque(estoque, CB_Motivos.Text);
+                    movimentacaoDAL.SaidaEstoque(estoque, motivolimpo);
                     MessageBox.Show("Você registrou uma saida!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
@@ -92,6 +120,7 @@ namespace Sistema_de_Estoque.UI.Movimentações
             }
         }
         #endregion
+
 
     }
 }
