@@ -27,7 +27,8 @@ namespace Sistema_de_Estoque.DAL
                     cmd.Parameters.AddWithValue("@p_Quantidade", movimentacao.Quantidade);
                     cmd.Parameters.AddWithValue("@p_FornecedorID", movimentacao.FornecedorId);
                     cmd.Parameters.AddWithValue("@p_UsuarioID", movimentacao.UsuarioId);
-                    cmd.Parameters.AddWithValue("@p_DataMovimentacao", movimentacao.DataMovimentacao);
+                    //cmd.Parameters.AddWithValue("@p_DataMovimentacao", movimentacao.DataMovimentacao);
+                    cmd.Parameters.AddWithValue("@p_Tipo", movimentacao.Tipo);
 
                     try
                     {
@@ -53,7 +54,8 @@ namespace Sistema_de_Estoque.DAL
                     cmd.Parameters.AddWithValue("@p_ProdutoID", movimentacao.ProdutoId);
                     cmd.Parameters.AddWithValue("@p_Quantidade", movimentacao.Quantidade);
                     cmd.Parameters.AddWithValue("@p_UsuarioID", movimentacao.UsuarioId);
-                    cmd.Parameters.AddWithValue("@p_DataMovimentacao", movimentacao.DataMovimentacao);
+                    //cmd.Parameters.AddWithValue("@p_DataMovimentacao", movimentacao.DataMovimentacao);
+                    cmd.Parameters.AddWithValue("@p_Tipo", movimentacao.Tipo);
                     cmd.Parameters.AddWithValue("@p_Motivo", motivo);
 
                     try
