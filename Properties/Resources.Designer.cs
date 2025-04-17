@@ -113,6 +113,16 @@ namespace Sistema_de_Estoque.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ico_confirmar {
+            get {
+                object obj = ResourceManager.GetObject("ico-confirmar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ico_lupa {
             get {
                 object obj = ResourceManager.GetObject("ico-lupa", resourceCulture);

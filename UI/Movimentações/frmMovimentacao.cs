@@ -13,20 +13,23 @@ namespace Sistema_de_Estoque.UI.Movimentações
         public frmMovimentacao()
         {
             InitializeComponent();
-
         }
 
         private void btn_Novo_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Você iniciou uma sessão de movimentação, primeiro selecione o tipo de movimentação(Entrada/Sáida)", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
+            btn_Cancelar.Enabled = true;
+            btn_Cancelar.Visible = true;
+            btn_Confirmar.Enabled = true;
+            btn_Confirmar.Visible = true;
             CB_Movimentos.Enabled = true;
             numUpDown_Quantidade.Enabled = true;
             monthCalendar1.Enabled = true;
             btn_BuscarFornecedor.Enabled = true;
             btn_BuscarProduto.Enabled = true;
             btn_BuscarUsuario.Enabled = true;
-            CB_Movimentos.SelectedIndex = -1;
+            btn_Novo.Enabled = false;
         }
 
         #region Metodos
@@ -40,6 +43,17 @@ namespace Sistema_de_Estoque.UI.Movimentações
             else
             {
                 CB_Motivos.Enabled = false;
+            }
+        }
+
+        private void LimparCampo(params Control[] campos)
+        {
+            foreach (Control campo in campos)
+            {
+                if (campo is TextBox txt) txt.Clear();
+                if (campo is MaskedTextBox mask) mask.Clear();
+                if (campo is ComboBox cb) cb.SelectedIndex = -1;
+                if (campo is NumericUpDown numeric) numeric.Value = 0;
             }
         }
 
@@ -80,8 +94,7 @@ namespace Sistema_de_Estoque.UI.Movimentações
         {
             try
             {
-                string motivoSelecionado = CB_Motivos.Text;
-                string motivolimpo = motivoSelecionado.Substring(6);
+
                 DateTime dataSelecionada = monthCalendar1.SelectionStart;
 
                 if (string.IsNullOrWhiteSpace(txtBox_Produto.Text) ||
@@ -98,7 +111,6 @@ namespace Sistema_de_Estoque.UI.Movimentações
                     ProdutoId = Convert.ToInt32(txtBox_Produto.Text),
                     Quantidade = Convert.ToInt32(numUpDown_Quantidade.Value),
                     Tipo = CB_Movimentos.Text,
-                    DataMovimentacao = dataSelecionada,
                     UsuarioId = Convert.ToInt32(txtBox_Usuário.Text),
                     FornecedorId = Convert.ToInt32(txtBox_Fornecedor.Text)
                 };
@@ -107,11 +119,42 @@ namespace Sistema_de_Estoque.UI.Movimentações
                 {
                     movimentacaoDAL.EntradaEstoque(estoque);
                     MessageBox.Show("Você registrou uma entrada!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    LimparCampo(txtBox_Produto, txtBox_Fornecedor, txtBox_Usuário, CB_Motivos, CB_Movimentos, numUpDown_Quantidade);
+                    btn_Cancelar.Enabled = false;
+                    btn_Cancelar.Visible = false;
+                    btn_Confirmar.Enabled = false;
+                    btn_Confirmar.Visible = false;
+                    CB_Movimentos.Enabled = false;
+                    numUpDown_Quantidade.Enabled = false;
+                    monthCalendar1.Enabled = false;
+                    btn_BuscarFornecedor.Enabled = false;
+                    btn_BuscarProduto.Enabled = false;
+                    btn_BuscarUsuario.Enabled = false;
+                    btn_Novo.Enabled = true;
+                    return;
                 }
                 else if (CB_Movimentos.SelectedIndex == 1)
                 {
+                    string motivolimpo = string.Empty;
+                    string motivoSelecionado = CB_Motivos.Text;
+                    string[] partes = motivoSelecionado.Split('-');
+                    motivolimpo = partes[1].Trim();
+
                     movimentacaoDAL.SaidaEstoque(estoque, motivolimpo);
-                    MessageBox.Show("Você registrou uma saida!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Você registrou uma saída!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    LimparCampo(txtBox_Produto, txtBox_Fornecedor, txtBox_Usuário, CB_Motivos, CB_Movimentos, numUpDown_Quantidade);
+                    btn_Cancelar.Enabled = false;
+                    btn_Cancelar.Visible = false;
+                    btn_Confirmar.Enabled = false;
+                    btn_Confirmar.Visible = false;
+                    CB_Movimentos.Enabled = false;
+                    numUpDown_Quantidade.Enabled = false;
+                    monthCalendar1.Enabled = false;
+                    btn_BuscarFornecedor.Enabled = false;
+                    btn_BuscarProduto.Enabled = false;
+                    btn_BuscarUsuario.Enabled = false;
+                    btn_Novo.Enabled = true;
+                    return;
                 }
             }
             catch (Exception ex)
@@ -119,8 +162,24 @@ namespace Sistema_de_Estoque.UI.Movimentações
                 MessageBox.Show("Erro: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
         #endregion
 
-
+        private void btn_Cancelar_Click(object sender, EventArgs e)
+        {
+            LimparCampo(txtBox_Produto, txtBox_Fornecedor, txtBox_Usuário, CB_Motivos, CB_Movimentos, numUpDown_Quantidade);
+            btn_Cancelar.Enabled = false;
+            btn_Cancelar.Visible = false;
+            btn_Confirmar.Enabled = false;
+            btn_Confirmar.Visible = false;
+            CB_Movimentos.Enabled = false;
+            numUpDown_Quantidade.Enabled = false;
+            monthCalendar1.Enabled = false;
+            btn_BuscarFornecedor.Enabled = false;
+            btn_BuscarProduto.Enabled = false;
+            btn_BuscarUsuario.Enabled = false;
+            btn_Novo.Enabled = true;
+        }
     }
 }

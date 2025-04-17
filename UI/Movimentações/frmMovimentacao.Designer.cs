@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_Confirmar = new System.Windows.Forms.Button();
             this.btn_Cancelar = new System.Windows.Forms.Button();
             this.btn_Gravar = new System.Windows.Forms.Button();
             this.btn_Novo = new System.Windows.Forms.Button();
@@ -46,11 +47,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.numUpDown_Quantidade = new System.Windows.Forms.NumericUpDown();
+            this.lbl222 = new System.Windows.Forms.Label();
             this.btn_BuscarFornecedor = new System.Windows.Forms.Button();
             this.btn_BuscarUsuario = new System.Windows.Forms.Button();
             this.btn_BuscarProduto = new System.Windows.Forms.Button();
-            this.numUpDown_Quantidade = new System.Windows.Forms.NumericUpDown();
-            this.lbl222 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDown_Quantidade)).BeginInit();
             this.SuspendLayout();
@@ -59,6 +60,7 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Info;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btn_Confirmar);
             this.panel1.Controls.Add(this.btn_Cancelar);
             this.panel1.Controls.Add(this.btn_Gravar);
             this.panel1.Controls.Add(this.btn_Novo);
@@ -68,15 +70,29 @@
             this.panel1.Size = new System.Drawing.Size(514, 50);
             this.panel1.TabIndex = 0;
             // 
+            // btn_Confirmar
+            // 
+            this.btn_Confirmar.Enabled = false;
+            this.btn_Confirmar.Image = global::Sistema_de_Estoque.Properties.Resources.ico_confirmar;
+            this.btn_Confirmar.Location = new System.Drawing.Point(435, 10);
+            this.btn_Confirmar.Name = "btn_Confirmar";
+            this.btn_Confirmar.Size = new System.Drawing.Size(30, 30);
+            this.btn_Confirmar.TabIndex = 22;
+            this.btn_Confirmar.UseVisualStyleBackColor = true;
+            this.btn_Confirmar.Visible = false;
+            this.btn_Confirmar.Click += new System.EventHandler(this.Entrada_Saida);
+            // 
             // btn_Cancelar
             // 
             this.btn_Cancelar.Enabled = false;
             this.btn_Cancelar.Image = global::Sistema_de_Estoque.Properties.Resources.ico_MoveCan21;
-            this.btn_Cancelar.Location = new System.Drawing.Point(94, 8);
+            this.btn_Cancelar.Location = new System.Drawing.Point(471, 10);
             this.btn_Cancelar.Name = "btn_Cancelar";
-            this.btn_Cancelar.Size = new System.Drawing.Size(35, 35);
+            this.btn_Cancelar.Size = new System.Drawing.Size(30, 30);
             this.btn_Cancelar.TabIndex = 3;
             this.btn_Cancelar.UseVisualStyleBackColor = true;
+            this.btn_Cancelar.Visible = false;
+            this.btn_Cancelar.Click += new System.EventHandler(this.btn_Cancelar_Click);
             // 
             // btn_Gravar
             // 
@@ -244,6 +260,25 @@
             this.label6.TabIndex = 19;
             this.label6.Text = "Motivo";
             // 
+            // numUpDown_Quantidade
+            // 
+            this.numUpDown_Quantidade.Enabled = false;
+            this.numUpDown_Quantidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.numUpDown_Quantidade.Location = new System.Drawing.Point(13, 148);
+            this.numUpDown_Quantidade.Name = "numUpDown_Quantidade";
+            this.numUpDown_Quantidade.Size = new System.Drawing.Size(120, 22);
+            this.numUpDown_Quantidade.TabIndex = 20;
+            // 
+            // lbl222
+            // 
+            this.lbl222.AutoSize = true;
+            this.lbl222.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.lbl222.Location = new System.Drawing.Point(10, 129);
+            this.lbl222.Name = "lbl222";
+            this.lbl222.Size = new System.Drawing.Size(77, 16);
+            this.lbl222.TabIndex = 21;
+            this.lbl222.Text = "Quantidade";
+            // 
             // btn_BuscarFornecedor
             // 
             this.btn_BuscarFornecedor.Enabled = false;
@@ -276,25 +311,6 @@
             this.btn_BuscarProduto.TabIndex = 4;
             this.btn_BuscarProduto.UseVisualStyleBackColor = true;
             this.btn_BuscarProduto.Click += new System.EventHandler(this.btn_BuscarProduto_Click);
-            // 
-            // numUpDown_Quantidade
-            // 
-            this.numUpDown_Quantidade.Enabled = false;
-            this.numUpDown_Quantidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.numUpDown_Quantidade.Location = new System.Drawing.Point(13, 148);
-            this.numUpDown_Quantidade.Name = "numUpDown_Quantidade";
-            this.numUpDown_Quantidade.Size = new System.Drawing.Size(120, 22);
-            this.numUpDown_Quantidade.TabIndex = 20;
-            // 
-            // lbl222
-            // 
-            this.lbl222.AutoSize = true;
-            this.lbl222.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.lbl222.Location = new System.Drawing.Point(10, 129);
-            this.lbl222.Name = "lbl222";
-            this.lbl222.Size = new System.Drawing.Size(77, 16);
-            this.lbl222.TabIndex = 21;
-            this.lbl222.Text = "Quantidade";
             // 
             // frmMovimentacao
             // 
@@ -360,5 +376,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.NumericUpDown numUpDown_Quantidade;
         private System.Windows.Forms.Label lbl222;
+        private System.Windows.Forms.Button btn_Confirmar;
     }
 }

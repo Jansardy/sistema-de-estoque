@@ -270,5 +270,8 @@
   <ItemGroup>
     <None Include="Resources\ico-MoveNovo.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ico-confirmar.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
