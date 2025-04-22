@@ -34,15 +34,8 @@
             this.lbl_User = new System.Windows.Forms.Label();
             this.mnStrip = new System.Windows.Forms.MenuStrip();
             this.cadastroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.produtosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fornecedorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.usuárioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.movimentaçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.entradaDeProdutosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saídaDeProdutosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.relatóriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.estoqueAtualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.históricoDeMovimentaçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alterarSenhaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.atualizarBancoDeDadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,6 +44,13 @@
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.produtosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fornecedorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.usuárioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MovimentacaoProdutosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TesteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.estoqueAtualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.históricoDeMovimentaçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnl_Bottom.SuspendLayout();
             this.mnStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
@@ -117,71 +117,16 @@
             this.cadastroToolStripMenuItem.Size = new System.Drawing.Size(90, 26);
             this.cadastroToolStripMenuItem.Text = "Cadastros";
             // 
-            // produtosToolStripMenuItem
-            // 
-            this.produtosToolStripMenuItem.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.produtosToolStripMenuItem.Image = global::Sistema_de_Estoque.Properties.Resources.icon_produto;
-            this.produtosToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.produtosToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.produtosToolStripMenuItem.Name = "produtosToolStripMenuItem";
-            this.produtosToolStripMenuItem.Size = new System.Drawing.Size(189, 38);
-            this.produtosToolStripMenuItem.Text = "Produtos";
-            this.produtosToolStripMenuItem.Click += new System.EventHandler(this.produtosToolStripMenuItem_Click);
-            // 
-            // fornecedorToolStripMenuItem
-            // 
-            this.fornecedorToolStripMenuItem.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fornecedorToolStripMenuItem.Image = global::Sistema_de_Estoque.Properties.Resources.icon_fornecedor;
-            this.fornecedorToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.fornecedorToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.fornecedorToolStripMenuItem.Name = "fornecedorToolStripMenuItem";
-            this.fornecedorToolStripMenuItem.Size = new System.Drawing.Size(189, 38);
-            this.fornecedorToolStripMenuItem.Text = "Fornecedores";
-            this.fornecedorToolStripMenuItem.Click += new System.EventHandler(this.fornecedorToolStripMenuItem_Click);
-            // 
-            // usuárioToolStripMenuItem
-            // 
-            this.usuárioToolStripMenuItem.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usuárioToolStripMenuItem.Image = global::Sistema_de_Estoque.Properties.Resources.icon_user;
-            this.usuárioToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.usuárioToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.usuárioToolStripMenuItem.Name = "usuárioToolStripMenuItem";
-            this.usuárioToolStripMenuItem.Size = new System.Drawing.Size(189, 38);
-            this.usuárioToolStripMenuItem.Text = "Usuários";
-            this.usuárioToolStripMenuItem.Click += new System.EventHandler(this.usuárioToolStripMenuItem_Click);
-            // 
             // movimentaçõesToolStripMenuItem
             // 
             this.movimentaçõesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.entradaDeProdutosToolStripMenuItem,
-            this.saídaDeProdutosToolStripMenuItem});
+            this.MovimentacaoProdutosToolStripMenuItem,
+            this.TesteToolStripMenuItem});
             this.movimentaçõesToolStripMenuItem.Margin = new System.Windows.Forms.Padding(3);
             this.movimentaçõesToolStripMenuItem.Name = "movimentaçõesToolStripMenuItem";
             this.movimentaçõesToolStripMenuItem.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.movimentaçõesToolStripMenuItem.Size = new System.Drawing.Size(121, 20);
             this.movimentaçõesToolStripMenuItem.Text = "Movimentações";
-            // 
-            // entradaDeProdutosToolStripMenuItem
-            // 
-            this.entradaDeProdutosToolStripMenuItem.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.entradaDeProdutosToolStripMenuItem.Image = global::Sistema_de_Estoque.Properties.Resources.icon_entrada;
-            this.entradaDeProdutosToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.entradaDeProdutosToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.entradaDeProdutosToolStripMenuItem.Name = "entradaDeProdutosToolStripMenuItem";
-            this.entradaDeProdutosToolStripMenuItem.Size = new System.Drawing.Size(233, 38);
-            this.entradaDeProdutosToolStripMenuItem.Text = "Entrada de produtos";
-            this.entradaDeProdutosToolStripMenuItem.Click += new System.EventHandler(this.entradaDeProdutosToolStripMenuItem_Click);
-            // 
-            // saídaDeProdutosToolStripMenuItem
-            // 
-            this.saídaDeProdutosToolStripMenuItem.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saídaDeProdutosToolStripMenuItem.Image = global::Sistema_de_Estoque.Properties.Resources.icon_saida;
-            this.saídaDeProdutosToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.saídaDeProdutosToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.saídaDeProdutosToolStripMenuItem.Name = "saídaDeProdutosToolStripMenuItem";
-            this.saídaDeProdutosToolStripMenuItem.Size = new System.Drawing.Size(233, 38);
-            this.saídaDeProdutosToolStripMenuItem.Text = "Saída de produtos";
-            this.saídaDeProdutosToolStripMenuItem.Click += new System.EventHandler(this.saídaDeProdutosToolStripMenuItem_Click);
             // 
             // relatóriosToolStripMenuItem
             // 
@@ -193,26 +138,6 @@
             this.relatóriosToolStripMenuItem.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.relatóriosToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
             this.relatóriosToolStripMenuItem.Text = "Relatórios";
-            // 
-            // estoqueAtualToolStripMenuItem
-            // 
-            this.estoqueAtualToolStripMenuItem.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.estoqueAtualToolStripMenuItem.Image = global::Sistema_de_Estoque.Properties.Resources.icon_caixas;
-            this.estoqueAtualToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.estoqueAtualToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.estoqueAtualToolStripMenuItem.Name = "estoqueAtualToolStripMenuItem";
-            this.estoqueAtualToolStripMenuItem.Size = new System.Drawing.Size(289, 38);
-            this.estoqueAtualToolStripMenuItem.Text = "Estoque Atual";
-            // 
-            // históricoDeMovimentaçõesToolStripMenuItem
-            // 
-            this.históricoDeMovimentaçõesToolStripMenuItem.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.históricoDeMovimentaçõesToolStripMenuItem.Image = global::Sistema_de_Estoque.Properties.Resources.icon_fluxo_caixa;
-            this.históricoDeMovimentaçõesToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.históricoDeMovimentaçõesToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.históricoDeMovimentaçõesToolStripMenuItem.Name = "históricoDeMovimentaçõesToolStripMenuItem";
-            this.históricoDeMovimentaçõesToolStripMenuItem.Size = new System.Drawing.Size(289, 38);
-            this.históricoDeMovimentaçõesToolStripMenuItem.Text = "Histórico de Movimentações";
             // 
             // configuraçõesToolStripMenuItem
             // 
@@ -248,7 +173,7 @@
             this.toolStrip.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuItem;
             this.toolStrip.BackColor = System.Drawing.SystemColors.ControlLight;
             this.toolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip.ImageScalingSize = new System.Drawing.Size(64, 64);
+            this.toolStrip.ImageScalingSize = new System.Drawing.Size(50, 50);
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton1,
             this.toolStripButton2,
@@ -284,11 +209,12 @@
             // toolStripButton3
             // 
             this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
+            this.toolStripButton3.Image = global::Sistema_de_Estoque.Properties.Resources.ico_movimentacao;
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
             this.toolStripButton3.Size = new System.Drawing.Size(68, 68);
             this.toolStripButton3.Text = "toolStripButton3";
+            this.toolStripButton3.Click += new System.EventHandler(this.MovimentacaoToolStripMenuItem_Click);
             // 
             // toolStripButton4
             // 
@@ -300,6 +226,82 @@
             this.toolStripButton4.Size = new System.Drawing.Size(36, 68);
             this.toolStripButton4.Text = "toolStripButton4";
             this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
+            // 
+            // produtosToolStripMenuItem
+            // 
+            this.produtosToolStripMenuItem.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.produtosToolStripMenuItem.Image = global::Sistema_de_Estoque.Properties.Resources.icon_produto;
+            this.produtosToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.produtosToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.produtosToolStripMenuItem.Name = "produtosToolStripMenuItem";
+            this.produtosToolStripMenuItem.Size = new System.Drawing.Size(189, 38);
+            this.produtosToolStripMenuItem.Text = "Produtos";
+            this.produtosToolStripMenuItem.Click += new System.EventHandler(this.produtosToolStripMenuItem_Click);
+            // 
+            // fornecedorToolStripMenuItem
+            // 
+            this.fornecedorToolStripMenuItem.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fornecedorToolStripMenuItem.Image = global::Sistema_de_Estoque.Properties.Resources.icon_fornecedor;
+            this.fornecedorToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.fornecedorToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.fornecedorToolStripMenuItem.Name = "fornecedorToolStripMenuItem";
+            this.fornecedorToolStripMenuItem.Size = new System.Drawing.Size(189, 38);
+            this.fornecedorToolStripMenuItem.Text = "Fornecedores";
+            this.fornecedorToolStripMenuItem.Click += new System.EventHandler(this.fornecedorToolStripMenuItem_Click);
+            // 
+            // usuárioToolStripMenuItem
+            // 
+            this.usuárioToolStripMenuItem.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usuárioToolStripMenuItem.Image = global::Sistema_de_Estoque.Properties.Resources.icon_user;
+            this.usuárioToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.usuárioToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.usuárioToolStripMenuItem.Name = "usuárioToolStripMenuItem";
+            this.usuárioToolStripMenuItem.Size = new System.Drawing.Size(189, 38);
+            this.usuárioToolStripMenuItem.Text = "Usuários";
+            this.usuárioToolStripMenuItem.Click += new System.EventHandler(this.usuárioToolStripMenuItem_Click);
+            // 
+            // MovimentacaoProdutosToolStripMenuItem
+            // 
+            this.MovimentacaoProdutosToolStripMenuItem.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MovimentacaoProdutosToolStripMenuItem.Image = global::Sistema_de_Estoque.Properties.Resources.ico_movimentacao;
+            this.MovimentacaoProdutosToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.MovimentacaoProdutosToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.MovimentacaoProdutosToolStripMenuItem.Name = "MovimentacaoProdutosToolStripMenuItem";
+            this.MovimentacaoProdutosToolStripMenuItem.Size = new System.Drawing.Size(199, 42);
+            this.MovimentacaoProdutosToolStripMenuItem.Text = "Movimentação";
+            this.MovimentacaoProdutosToolStripMenuItem.Click += new System.EventHandler(this.MovimentacaoToolStripMenuItem_Click);
+            // 
+            // TesteToolStripMenuItem
+            // 
+            this.TesteToolStripMenuItem.Enabled = false;
+            this.TesteToolStripMenuItem.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TesteToolStripMenuItem.Image = global::Sistema_de_Estoque.Properties.Resources.logo_pass;
+            this.TesteToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.TesteToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.TesteToolStripMenuItem.Name = "TesteToolStripMenuItem";
+            this.TesteToolStripMenuItem.Size = new System.Drawing.Size(199, 42);
+            this.TesteToolStripMenuItem.Text = "Teste";
+            this.TesteToolStripMenuItem.Click += new System.EventHandler(this.saídaDeProdutosToolStripMenuItem_Click);
+            // 
+            // estoqueAtualToolStripMenuItem
+            // 
+            this.estoqueAtualToolStripMenuItem.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.estoqueAtualToolStripMenuItem.Image = global::Sistema_de_Estoque.Properties.Resources.icon_caixas;
+            this.estoqueAtualToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.estoqueAtualToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.estoqueAtualToolStripMenuItem.Name = "estoqueAtualToolStripMenuItem";
+            this.estoqueAtualToolStripMenuItem.Size = new System.Drawing.Size(289, 38);
+            this.estoqueAtualToolStripMenuItem.Text = "Estoque Atual";
+            // 
+            // históricoDeMovimentaçõesToolStripMenuItem
+            // 
+            this.históricoDeMovimentaçõesToolStripMenuItem.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.históricoDeMovimentaçõesToolStripMenuItem.Image = global::Sistema_de_Estoque.Properties.Resources.icon_fluxo_caixa;
+            this.históricoDeMovimentaçõesToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.históricoDeMovimentaçõesToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.históricoDeMovimentaçõesToolStripMenuItem.Name = "históricoDeMovimentaçõesToolStripMenuItem";
+            this.históricoDeMovimentaçõesToolStripMenuItem.Size = new System.Drawing.Size(289, 38);
+            this.históricoDeMovimentaçõesToolStripMenuItem.Text = "Histórico de Movimentações";
             // 
             // frmMain
             // 
@@ -341,8 +343,8 @@
         private System.Windows.Forms.Label lbl_data;
         private System.Windows.Forms.ToolStripButton toolStripButton4;
         private System.Windows.Forms.ToolStripMenuItem movimentaçõesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem entradaDeProdutosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saídaDeProdutosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MovimentacaoProdutosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem TesteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem relatóriosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem estoqueAtualToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem históricoDeMovimentaçõesToolStripMenuItem;

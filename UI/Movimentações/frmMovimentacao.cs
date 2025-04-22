@@ -137,8 +137,26 @@ namespace Sistema_de_Estoque.UI.Movimentações
                 {
                     string motivolimpo = string.Empty;
                     string motivoSelecionado = CB_Motivos.Text;
-                    string[] partes = motivoSelecionado.Split('-');
-                    motivolimpo = partes[1].Trim();
+
+                    if (!string.IsNullOrWhiteSpace(motivoSelecionado) && motivoSelecionado.Contains("-"))
+                    {
+                        string[] partes = motivoSelecionado.Split('-');
+
+                        if (partes.Length >= 2)
+                        {
+                            motivolimpo = partes[1].Trim();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Motivo inválido. Selecione um motivo válido da lista.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Selecione um motivo válido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
 
                     movimentacaoDAL.SaidaEstoque(estoque, motivolimpo);
                     MessageBox.Show("Você registrou uma saída!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);

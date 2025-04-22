@@ -273,5 +273,8 @@
   <ItemGroup>
     <None Include="Resources\ico-confirmar.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ico-movimentacao.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

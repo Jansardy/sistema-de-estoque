@@ -27,8 +27,8 @@ namespace Sistema_de_Estoque.UI
                 usuárioToolStripMenuItem.Enabled = false;
                 fornecedorToolStripMenuItem.Enabled = false;
                 atualizarBancoDeDadosToolStripMenuItem.Enabled = false;
-                saídaDeProdutosToolStripMenuItem.Enabled = true;
-                entradaDeProdutosToolStripMenuItem.Enabled = true;
+                TesteToolStripMenuItem.Enabled = true;
+                MovimentacaoProdutosToolStripMenuItem.Enabled = true;
             }
         }
      
@@ -61,10 +61,10 @@ namespace Sistema_de_Estoque.UI
             frmFornecedores.ShowDialog();
         }
 
-        private void entradaDeProdutosToolStripMenuItem_Click(object sender, EventArgs e)
+        private void MovimentacaoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmMovimentacao frmEntrada = new frmMovimentacao();
-            frmEntrada.ShowDialog();
+            frmMovimentacao frmMovimentacao = new frmMovimentacao();
+            frmMovimentacao.ShowDialog();
         }
 
         private void saídaDeProdutosToolStripMenuItem_Click(object sender, EventArgs e)

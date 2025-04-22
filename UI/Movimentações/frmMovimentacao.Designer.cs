@@ -265,6 +265,11 @@
             this.numUpDown_Quantidade.Enabled = false;
             this.numUpDown_Quantidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
             this.numUpDown_Quantidade.Location = new System.Drawing.Point(13, 148);
+            this.numUpDown_Quantidade.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
             this.numUpDown_Quantidade.Name = "numUpDown_Quantidade";
             this.numUpDown_Quantidade.Size = new System.Drawing.Size(120, 22);
             this.numUpDown_Quantidade.TabIndex = 20;
