@@ -69,6 +69,7 @@ namespace Sistema_de_Estoque.UI
             this.txtBox_Pass.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBox_Pass.Location = new System.Drawing.Point(109, 293);
             this.txtBox_Pass.Name = "txtBox_Pass";
+            this.txtBox_Pass.PasswordChar = '*';
             this.txtBox_Pass.Size = new System.Drawing.Size(190, 25);
             this.txtBox_Pass.TabIndex = 2;
             // 

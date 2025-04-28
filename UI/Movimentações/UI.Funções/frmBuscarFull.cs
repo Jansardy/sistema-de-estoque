@@ -156,11 +156,12 @@ namespace Sistema_de_Estoque.UI.Movimentações.UI.Funções
                 if (dgv_Resultado.SelectedRows.Count > 0)
                 {
                     int ID = Convert.ToInt32(dgv_Resultado.SelectedRows[0].Cells["ID"].Value);
+                    string nome = dgv_Resultado.SelectedRows[0].Cells["Nome"].Value.ToString();
 
                     frmMovimentacao frmMovimentacao = Application.OpenForms.OfType<frmMovimentacao>().FirstOrDefault();
                     if (frmMovimentacao != null)
                     {
-                        frmMovimentacao.SetFornecedorSelecionado(ID);
+                        frmMovimentacao.SetFornecedorSelecionado(ID, nome);
                     }
                     this.Close();
                 }
@@ -174,11 +175,12 @@ namespace Sistema_de_Estoque.UI.Movimentações.UI.Funções
                 if (dgv_Resultado.SelectedRows.Count > 0)
                 {
                     int ID = Convert.ToInt32(dgv_Resultado.SelectedRows[0].Cells["ID"].Value);
+                    string nome = dgv_Resultado.SelectedRows[0].Cells["Nome"].Value.ToString();
 
                     frmMovimentacao frmMovimentacao = Application.OpenForms.OfType<frmMovimentacao>().FirstOrDefault();
                     if (frmMovimentacao != null)
                     {
-                        frmMovimentacao.SetProdutoSelecionado(ID);
+                        frmMovimentacao.SetProdutoSelecionado(ID, nome);
                     }
                     this.Close();
                 }
@@ -192,11 +194,12 @@ namespace Sistema_de_Estoque.UI.Movimentações.UI.Funções
                 if (dgv_Resultado.SelectedRows.Count > 0)
                 {
                     int ID = Convert.ToInt32(dgv_Resultado.SelectedRows[0].Cells["ID"].Value);
+                    string nome = dgv_Resultado.SelectedRows[0].Cells["Nome"].Value.ToString();
 
                     frmMovimentacao frmMovimentacao = Application.OpenForms.OfType<frmMovimentacao>().FirstOrDefault();
                     if (frmMovimentacao != null)
                     {
-                        frmMovimentacao.SetUsuarioSelecionado(ID);
+                        frmMovimentacao.SetUsuarioSelecionado(ID, nome);
                     }
                     this.Close();
                 }

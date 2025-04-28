@@ -1,5 +1,6 @@
 ﻿using Sistema_de_Estoque.Entities;
 using Sistema_de_Estoque.UI.Cadastros;
+using Sistema_de_Estoque.UI.Estoque;
 using Sistema_de_Estoque.UI.Movimentações;
 using System;
 using System.Collections.Generic;
@@ -71,6 +72,12 @@ namespace Sistema_de_Estoque.UI
         {
             frmSaidaMove frmSaida = new frmSaidaMove();
             frmSaida.ShowDialog();
+        }
+
+        private void estoqueAtualToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmEstoque estoque = new frmEstoque();
+            estoque.ShowDialog();
         }
     }
 }
