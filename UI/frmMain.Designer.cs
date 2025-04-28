@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.pnl_Bottom = new System.Windows.Forms.Panel();
             this.lbl_data = new System.Windows.Forms.Label();
             this.lbl_User = new System.Windows.Forms.Label();
@@ -183,7 +182,7 @@
             this.toolStrip.Margin = new System.Windows.Forms.Padding(10, 0, 35, 10);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.Padding = new System.Windows.Forms.Padding(5, 0, 10, 0);
-            this.toolStrip.Size = new System.Drawing.Size(1344, 71);
+            this.toolStrip.Size = new System.Drawing.Size(1344, 57);
             this.toolStrip.Stretch = true;
             this.toolStrip.TabIndex = 2;
             this.toolStrip.Text = "toolStrip1";
@@ -191,19 +190,19 @@
             // toolStripButton1
             // 
             this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.Image = global::Sistema_de_Estoque.Properties.Resources.icon_fluxo_caixa;
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(68, 68);
+            this.toolStripButton1.Size = new System.Drawing.Size(54, 54);
             this.toolStripButton1.Text = "toolStripButton1";
             // 
             // toolStripButton2
             // 
             this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.Image = global::Sistema_de_Estoque.Properties.Resources.icon_caixas;
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(68, 68);
+            this.toolStripButton2.Size = new System.Drawing.Size(54, 54);
             this.toolStripButton2.Text = "toolStripButton2";
             // 
             // toolStripButton3
@@ -212,7 +211,7 @@
             this.toolStripButton3.Image = global::Sistema_de_Estoque.Properties.Resources.ico_movimentacao;
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(68, 68);
+            this.toolStripButton3.Size = new System.Drawing.Size(54, 54);
             this.toolStripButton3.Text = "toolStripButton3";
             this.toolStripButton3.Click += new System.EventHandler(this.MovimentacaoToolStripMenuItem_Click);
             // 
@@ -223,7 +222,7 @@
             this.toolStripButton4.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(36, 68);
+            this.toolStripButton4.Size = new System.Drawing.Size(36, 54);
             this.toolStripButton4.Text = "toolStripButton4";
             this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
@@ -234,7 +233,7 @@
             this.produtosToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.produtosToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.produtosToolStripMenuItem.Name = "produtosToolStripMenuItem";
-            this.produtosToolStripMenuItem.Size = new System.Drawing.Size(189, 38);
+            this.produtosToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
             this.produtosToolStripMenuItem.Text = "Produtos";
             this.produtosToolStripMenuItem.Click += new System.EventHandler(this.produtosToolStripMenuItem_Click);
             // 
@@ -245,7 +244,7 @@
             this.fornecedorToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.fornecedorToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.fornecedorToolStripMenuItem.Name = "fornecedorToolStripMenuItem";
-            this.fornecedorToolStripMenuItem.Size = new System.Drawing.Size(189, 38);
+            this.fornecedorToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
             this.fornecedorToolStripMenuItem.Text = "Fornecedores";
             this.fornecedorToolStripMenuItem.Click += new System.EventHandler(this.fornecedorToolStripMenuItem_Click);
             // 
@@ -256,7 +255,7 @@
             this.usuárioToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.usuárioToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.usuárioToolStripMenuItem.Name = "usuárioToolStripMenuItem";
-            this.usuárioToolStripMenuItem.Size = new System.Drawing.Size(189, 38);
+            this.usuárioToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
             this.usuárioToolStripMenuItem.Text = "Usuários";
             this.usuárioToolStripMenuItem.Click += new System.EventHandler(this.usuárioToolStripMenuItem_Click);
             // 
@@ -292,6 +291,7 @@
             this.estoqueAtualToolStripMenuItem.Name = "estoqueAtualToolStripMenuItem";
             this.estoqueAtualToolStripMenuItem.Size = new System.Drawing.Size(289, 38);
             this.estoqueAtualToolStripMenuItem.Text = "Estoque Atual";
+            this.estoqueAtualToolStripMenuItem.Click += new System.EventHandler(this.estoqueAtualToolStripMenuItem_Click);
             // 
             // históricoDeMovimentaçõesToolStripMenuItem
             // 

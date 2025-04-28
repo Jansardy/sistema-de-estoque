@@ -8,6 +8,10 @@ namespace Sistema_de_Estoque.UI.Movimentações
 {
     public partial class frmMovimentacao : Form
     {
+        int IDProd;
+        int IDUser;
+        int IDForn;
+
 
         MovimentacaoDAL movimentacaoDAL = new MovimentacaoDAL();
         public frmMovimentacao()
@@ -75,19 +79,22 @@ namespace Sistema_de_Estoque.UI.Movimentações
             frmBuscar.ShowDialog();
         }
 
-        public void SetFornecedorSelecionado(int fornecedorSelecionado)
+        public void SetFornecedorSelecionado(int IDFornecedor, string NomeFornecedor)
         {
-            txtBox_Fornecedor.Text = Convert.ToString(fornecedorSelecionado);
+            txtBox_Fornecedor.Text = NomeFornecedor;
+            IDForn = IDFornecedor;
         }
 
-        public void SetUsuarioSelecionado(int usuarioSelecionado)
+        public void SetUsuarioSelecionado(int IDUsuario, string NomeUser)
         {
-            txtBox_Usuário.Text = Convert.ToString(usuarioSelecionado);
+            txtBox_Usuário.Text = NomeUser;
+            IDUser = IDUsuario;
         }
 
-        public void SetProdutoSelecionado(int produtoSeleciona)
+        public void SetProdutoSelecionado(int IDProduto, string NomeProduto)
         {
-            txtBox_Produto.Text = Convert.ToString(produtoSeleciona);
+            txtBox_Produto.Text = NomeProduto;
+            IDProd = IDProduto;
         }
 
         private void Entrada_Saida(object sender, EventArgs e)
@@ -108,11 +115,11 @@ namespace Sistema_de_Estoque.UI.Movimentações
 
                 MovimentacaoEstoque estoque = new MovimentacaoEstoque
                 {
-                    ProdutoId = Convert.ToInt32(txtBox_Produto.Text),
+                    ProdutoId = Convert.ToInt32(IDProd),
                     Quantidade = Convert.ToInt32(numUpDown_Quantidade.Value),
                     Tipo = CB_Movimentos.Text,
-                    UsuarioId = Convert.ToInt32(txtBox_Usuário.Text),
-                    FornecedorId = Convert.ToInt32(txtBox_Fornecedor.Text)
+                    UsuarioId = Convert.ToInt32(IDUser),
+                    FornecedorId = Convert.ToInt32(IDForn)
                 };
 
                 if (CB_Movimentos.SelectedIndex == 0)
