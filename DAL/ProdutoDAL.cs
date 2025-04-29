@@ -79,7 +79,7 @@ namespace Sistema_de_Estoque.DAL
                 using (MySqlConnection connection = new MySqlConnection(strConnection))
                 {
                     connection.Open();
-                    Console.WriteLine("Conexão aberta!");
+                    //Console.WriteLine("Conexão aberta!");
 
                     using (MySqlCommand cmd = new MySqlCommand("BuscarProdutos", connection))
                     {
@@ -142,6 +142,45 @@ namespace Sistema_de_Estoque.DAL
         }
         #endregion
 
+        #region Views
+        public List<ProdutoEstoqueView> Vw_BuscarProduto()
+        {
+            List<ProdutoEstoqueView> produtos = new List<ProdutoEstoqueView>();
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(strConnection))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM vw_estoqueprodutos", connection))
+                    {
+                        connection.Open();
 
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                ProdutoEstoqueView produto = new ProdutoEstoqueView
+                                {
+                                    ID = reader.GetInt32("ID"),
+                                    Nome = reader.GetString("NomeProduto"),
+                                    Categoria = reader.GetString("Categoria"),
+                                    Quantidade = reader.GetInt32("Quantidade"),
+                                    Preco = reader.GetDecimal("Preco"),
+                                    Fornecedor = reader.GetString("Fornecedor")
+                                };
+
+                                produtos.Add(produto);
+                                Console.WriteLine($"Produto encontrado: {produto.Nome}");
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao entrar em contato com o estoque: " + ex.Message);
+            }
+            return produtos;
+        }
+        #endregion
     }
 }

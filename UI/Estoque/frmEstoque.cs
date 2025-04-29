@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sistema_de_Estoque.DAL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,18 +8,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Sistema_de_Estoque.DAL;
 
 namespace Sistema_de_Estoque.UI.Estoque
 {
     public partial class frmEstoque : Form
     {
+        ProdutoDAL produtoDAL = new ProdutoDAL();
         public frmEstoque()
         {
             InitializeComponent();
-            Carregar_Categorias();
         }
 
-
+        private void frmEstoque_Load(object sender, EventArgs e)
+        {
+            Carregar_estoque();
+            Carregar_Categorias();
+        }
 
         #region Metodos
         private void Carregar_Categorias()
@@ -34,7 +40,15 @@ namespace Sistema_de_Estoque.UI.Estoque
                 MessageBox.Show($"Erro ao carregar Categorias.\n\nDetalhes técnicos: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        #endregion
 
+        private void Carregar_estoque()
+        {
+            var produtos = produtoDAL.Vw_BuscarProduto();
+            dgv_EstoquePro.DataSource = produtos;
+            
+        }
+
+
+        #endregion
     }
 }
