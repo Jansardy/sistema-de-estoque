@@ -2,6 +2,7 @@
 using Sistema_de_Estoque.UI.Cadastros;
 using Sistema_de_Estoque.UI.Estoque;
 using Sistema_de_Estoque.UI.Movimentações;
+using Sistema_de_Estoque.UI.Movimentações.Histórico;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -68,16 +69,16 @@ namespace Sistema_de_Estoque.UI
             frmMovimentacao.ShowDialog();
         }
 
-        private void saídaDeProdutosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmSaidaMove frmSaida = new frmSaidaMove();
-            frmSaida.ShowDialog();
-        }
-
         private void estoqueAtualToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmEstoque estoque = new frmEstoque();
             estoque.ShowDialog();
+        }
+
+        private void históricoDeMovimentaçõesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmHistoricoMovimentacao his = new frmHistoricoMovimentacao();
+            his.ShowDialog();
         }
     }
 }
