@@ -4,7 +4,7 @@ Este é um sistema de gerenciamento de estoque desenvolvido em **C# .NET Windows
 
 ## 🚀 Funcionalidades:
 ✅ Cadastro, edição e exclusão de produtos  
-**X** Gerenciamento de fornecedores  
+✅ Gerenciamento de fornecedores  
 **X** Interface amigável com Windows Forms  
 ✅ Uso de `MySql.Data` para integração com MySQL  
 
