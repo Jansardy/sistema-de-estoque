@@ -31,8 +31,8 @@ namespace Sistema_de_Estoque.UI.Cadastros.UI.Funções
 
         private void btn_Procurar_Click(object sender, EventArgs e)
         {
-            string nome = txtBox_Nome.Text;
-            string categoria = cbBox_Categoria.SelectedIndex.ToString() ?? string.Empty;
+            string nome = txtBox_Nome.Text ?? string.Empty;
+            string categoria = cbBox_Categoria.Text ?? string.Empty;
 
             var produtos = produtoDAL.BuscarProduto(nome, categoria);
 

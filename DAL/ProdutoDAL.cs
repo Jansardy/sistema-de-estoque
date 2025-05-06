@@ -85,7 +85,7 @@ namespace Sistema_de_Estoque.DAL
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("p_Nome", nome ?? string.Empty);
-                        cmd.Parameters.AddWithValue("p_Categoria", categoria == "-1" ? string.Empty : categoria); ;
+                        cmd.Parameters.AddWithValue("p_Categoria", categoria ?? string.Empty); ;
 
                         Console.WriteLine($"Chamando procedure com Nome: '{nome}' e Categoria: '{categoria}'");
 

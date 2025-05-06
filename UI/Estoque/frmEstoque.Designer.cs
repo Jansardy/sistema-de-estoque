@@ -57,14 +57,13 @@
             // 
             // btn_Buscar
             // 
-            this.btn_Buscar.Enabled = false;
             this.btn_Buscar.Location = new System.Drawing.Point(635, 13);
             this.btn_Buscar.Name = "btn_Buscar";
             this.btn_Buscar.Size = new System.Drawing.Size(75, 55);
             this.btn_Buscar.TabIndex = 4;
-            this.btn_Buscar.Text = "button1";
+            this.btn_Buscar.Text = "Filtrar";
             this.btn_Buscar.UseVisualStyleBackColor = true;
-            this.btn_Buscar.Visible = false;
+            this.btn_Buscar.Click += new System.EventHandler(this.btn_Buscar_Click);
             // 
             // label2
             // 
@@ -88,7 +87,6 @@
             // 
             // cbBox_Categoria
             // 
-            this.cbBox_Categoria.Enabled = false;
             this.cbBox_Categoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
             this.cbBox_Categoria.FormattingEnabled = true;
             this.cbBox_Categoria.Location = new System.Drawing.Point(75, 49);
@@ -98,7 +96,6 @@
             // 
             // txtBox_Nome
             // 
-            this.txtBox_Nome.Enabled = false;
             this.txtBox_Nome.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
             this.txtBox_Nome.Location = new System.Drawing.Point(75, 13);
             this.txtBox_Nome.Name = "txtBox_Nome";
