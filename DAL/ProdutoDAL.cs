@@ -142,44 +142,31 @@ namespace Sistema_de_Estoque.DAL
         }
         #endregion
 
-        #region Views
-        public List<ProdutoEstoqueView> Vw_BuscarProduto()
+        #region Relatório
+        public DataTable BuscarRelatorioProdutos(string nome, string categoria)
         {
-            List<ProdutoEstoqueView> produtos = new List<ProdutoEstoqueView>();
-            try
+            DataTable tab = new DataTable();
+
+            using (MySqlConnection con = new MySqlConnection(strConnection))
             {
-                using (MySqlConnection connection = new MySqlConnection(strConnection))
+                try
                 {
-                    using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM vw_estoqueprodutos", connection))
+                    using (MySqlCommand cmd = new MySqlCommand("RelatorioProdutos", con))
                     {
-                        connection.Open();
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@p_Nomee", nome);
+                        cmd.Parameters.AddWithValue("@p_Categorias", categoria);
 
-                        using (MySqlDataReader reader = cmd.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                ProdutoEstoqueView produto = new ProdutoEstoqueView
-                                {
-                                    ID = reader.GetInt32("ID"),
-                                    Nome = reader.GetString("NomeProduto"),
-                                    Categoria = reader.GetString("Categoria"),
-                                    Quantidade = reader.GetInt32("Quantidade"),
-                                    Preco = reader.GetDecimal("Preco"),
-                                    Fornecedor = reader.GetString("Fornecedor")
-                                };
-
-                                produtos.Add(produto);
-                                Console.WriteLine($"Produto encontrado: {produto.Nome}");
-                            }
-                        }
+                        MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                        adapter.Fill(tab);
                     }
                 }
+                catch (Exception ex) 
+                { 
+                    throw new Exception("Erroa ao buscar relatório: " + ex.Message); 
+                }
             }
-            catch (Exception ex)
-            {
-                throw new Exception("Erro ao entrar em contato com o estoque: " + ex.Message);
-            }
-            return produtos;
+            return tab;
         }
         #endregion
     }

@@ -23,8 +23,8 @@ namespace Sistema_de_Estoque.UI.Movimentações.Histórico
         #region Metodos
         private void Carregar_estoque()
         {
-            var produtos = produtoDAL.Vw_BuscarProduto();
-            dgv_EstoquePro.DataSource = produtos;
+            //var produtos = produtoDAL.Vw_BuscarProduto();
+            //dgv_EstoquePro.DataSource = produtos;
 
         }
         #endregion

@@ -58,7 +58,6 @@
     <Compile Include="Entities\Fornecedor.cs" />
     <Compile Include="Entities\MovimentacaoEstoque.cs" />
     <Compile Include="Entities\Produto.cs" />
-    <Compile Include="Entities\ProdutoEstoqueView.cs" />
     <Compile Include="Entities\Usuario.cs" />
     <Compile Include="Start.cs">
       <SubType>Form</SubType>

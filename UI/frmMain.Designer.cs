@@ -181,7 +181,6 @@
             this.TesteToolStripMenuItem.Name = "TesteToolStripMenuItem";
             this.TesteToolStripMenuItem.Size = new System.Drawing.Size(199, 42);
             this.TesteToolStripMenuItem.Text = "Teste";
-            this.TesteToolStripMenuItem.Click += new System.EventHandler(this.saídaDeProdutosToolStripMenuItem_Click);
             // 
             // relatóriosToolStripMenuItem
             // 

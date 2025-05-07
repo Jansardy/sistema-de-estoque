@@ -28,9 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btn_Buscar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cbBox_Categoria = new System.Windows.Forms.ComboBox();
@@ -44,7 +43,6 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Info;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.btn_Buscar);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.cbBox_Categoria);
@@ -54,16 +52,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(723, 80);
             this.panel1.TabIndex = 0;
-            // 
-            // btn_Buscar
-            // 
-            this.btn_Buscar.Location = new System.Drawing.Point(635, 13);
-            this.btn_Buscar.Name = "btn_Buscar";
-            this.btn_Buscar.Size = new System.Drawing.Size(75, 55);
-            this.btn_Buscar.TabIndex = 4;
-            this.btn_Buscar.Text = "Filtrar";
-            this.btn_Buscar.UseVisualStyleBackColor = true;
-            this.btn_Buscar.Click += new System.EventHandler(this.btn_Buscar_Click);
             // 
             // label2
             // 
@@ -93,6 +81,7 @@
             this.cbBox_Categoria.Name = "cbBox_Categoria";
             this.cbBox_Categoria.Size = new System.Drawing.Size(191, 24);
             this.cbBox_Categoria.TabIndex = 1;
+            this.cbBox_Categoria.SelectedIndexChanged += new System.EventHandler(this.cbBox_Categoria_SelectedIndexChanged);
             // 
             // txtBox_Nome
             // 
@@ -101,6 +90,7 @@
             this.txtBox_Nome.Name = "txtBox_Nome";
             this.txtBox_Nome.Size = new System.Drawing.Size(191, 22);
             this.txtBox_Nome.TabIndex = 0;
+            this.txtBox_Nome.TextChanged += new System.EventHandler(this.txtBox_Nome_TextChanged);
             // 
             // dgv_EstoquePro
             // 
@@ -109,14 +99,14 @@
             this.dgv_EstoquePro.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_EstoquePro.BackgroundColor = System.Drawing.SystemColors.MenuBar;
             this.dgv_EstoquePro.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_EstoquePro.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_EstoquePro.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgv_EstoquePro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_EstoquePro.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_EstoquePro.Location = new System.Drawing.Point(0, 80);
@@ -155,7 +145,6 @@
         private System.Windows.Forms.ComboBox cbBox_Categoria;
         private System.Windows.Forms.TextBox txtBox_Nome;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btn_Buscar;
         private System.Windows.Forms.DataGridView dgv_EstoquePro;
     }
 }
