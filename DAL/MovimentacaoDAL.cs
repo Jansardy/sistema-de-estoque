@@ -14,6 +14,7 @@ namespace Sistema_de_Estoque.DAL
 
         private readonly string strConnection = "server=localhost;port=3306;User Id=root;database=estoquedb;password=J#nsen1804";
 
+        #region Entrada
         public void EntradaEstoque(MovimentacaoEstoque movimentacao)
         {
             using (MySqlConnection con = new MySqlConnection(strConnection))
@@ -41,7 +42,9 @@ namespace Sistema_de_Estoque.DAL
                 }
             }
         }
+        #endregion
 
+        #region Saída
         public void SaidaEstoque(MovimentacaoEstoque movimentacao, string motivo)
         {
             using (MySqlConnection con = new MySqlConnection(strConnection))
@@ -69,9 +72,11 @@ namespace Sistema_de_Estoque.DAL
                 }
             }
         }
+        #endregion
 
+        #region Relatório
 
-
+        #endregion
 
     }
 }
