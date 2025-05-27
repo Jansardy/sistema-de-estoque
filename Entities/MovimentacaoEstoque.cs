@@ -14,6 +14,6 @@ namespace Sistema_de_Estoque.Entities
         public string Tipo { get; set; }
         public DateTime DataMovimentacao { get; set; }
         public int UsuarioId { get; set; }
-        public int? FornecedorId { get; set; }
+        public int FornecedorId { get; set; }
     }
 }

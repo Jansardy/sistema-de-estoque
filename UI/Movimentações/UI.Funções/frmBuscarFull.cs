@@ -46,7 +46,7 @@ namespace Sistema_de_Estoque.UI.Movimentações.UI.Funções
             }
         }
 
-        #region Metodos
+        #region Métodos
         private void btn_can_Click(object sender, EventArgs e)
         {
             this.Close();

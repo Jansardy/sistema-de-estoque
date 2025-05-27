@@ -85,23 +85,11 @@
     <Compile Include="UI\Cadastros\frmUsuarios.Designer.cs">
       <DependentUpon>frmUsuarios.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Cadastros\UI.Funções\frmBuscarFornecedor.cs">
+    <Compile Include="UI\Cadastros\UI.Funções\frmBuscarCadastro.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Cadastros\UI.Funções\frmBuscarFornecedor.Designer.cs">
-      <DependentUpon>frmBuscarFornecedor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Cadastros\UI.Funções\frmBuscarProduto.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\Cadastros\UI.Funções\frmBuscarProduto.Designer.cs">
-      <DependentUpon>frmBuscarProduto.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Cadastros\UI.Funções\frmBuscarUsuario.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\Cadastros\UI.Funções\frmBuscarUsuario.Designer.cs">
-      <DependentUpon>frmBuscarUsuario.cs</DependentUpon>
+    <Compile Include="UI\Cadastros\UI.Funções\frmBuscarCadastro.Designer.cs">
+      <DependentUpon>frmBuscarCadastro.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Estoque\frmEstoque.cs">
       <SubType>Form</SubType>
@@ -162,14 +150,8 @@
     <EmbeddedResource Include="UI\Cadastros\frmUsuarios.resx">
       <DependentUpon>frmUsuarios.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Cadastros\UI.Funções\frmBuscarFornecedor.resx">
-      <DependentUpon>frmBuscarFornecedor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\Cadastros\UI.Funções\frmBuscarProduto.resx">
-      <DependentUpon>frmBuscarProduto.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\Cadastros\UI.Funções\frmBuscarUsuario.resx">
-      <DependentUpon>frmBuscarUsuario.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Cadastros\UI.Funções\frmBuscarCadastro.resx">
+      <DependentUpon>frmBuscarCadastro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Estoque\frmEstoque.resx">
       <DependentUpon>frmEstoque.cs</DependentUpon>

@@ -16,168 +16,70 @@ namespace Sistema_de_Estoque.UI.Cadastros
     public partial class frmUsuarios : Form
     {
         UsuariosDAL userDal = new UsuariosDAL();
+        int acao = 0;
         public frmUsuarios()
         {
             InitializeComponent();
         }
 
 
-        #region Incluir Form
-        private void Inserir_Incluir(object sender, EventArgs e)
+        #region Funções
+
+        #region Inserir
+        private void btn_Inserir_Click(object sender, EventArgs e)
         {
-            btn_Add.Enabled = true;
-            btn_Can.Enabled = true;
-            btn_Add.Visible = true;
-            btn_Can.Visible = true;
-            txtBox_Nome.Enabled = true;
-            txtBox_Login.Enabled = true;
-            txtBox_Senha.Enabled = true;
-            cBox_Nivel.Enabled = true;
-
-            txtBox_Nome.Clear();
-            txtBox_Login.Clear();
-            txtBox_Senha.Clear();
-            cBox_Nivel.SelectedIndex = -1;
-
+            acao = 1;
+            btn_Buscar.Enabled = false;
             btn_Inserir.Enabled = false;
-        }
-
-        private void Adicionar_Incluir(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtBox_Login.Text) || string.IsNullOrEmpty(txtBox_Nome.Text) || string.IsNullOrEmpty(txtBox_Senha.Text) || string.IsNullOrEmpty(cBox_Nivel.Text))
-            {
-                MessageBox.Show("Um campo ou mais campos não foram preenchidos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
-
-            try
-            {
-                Usuario user = new Usuario
-                {
-                    Nome = txtBox_Nome.Text,
-                    Login = txtBox_Login.Text,
-                    Senha = txtBox_Senha.Text,
-                    NivelAcesso = cBox_Nivel.Text
-                };
-
-                userDal.InserirUsuario(user);
-                MessageBox.Show("Usuário inserido com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                txtBox_Login.Clear();
-                txtBox_Nome.Clear();
-                txtBox_Senha.Clear();
-                cBox_Nivel.SelectedIndex = -1;
-
-                btn_Add.Enabled = false;
-                btn_Can.Enabled = false;
-                btn_Add.Visible = false;
-                btn_Can.Visible = false;
-                txtBox_Nome.Enabled = false;
-                txtBox_Login.Enabled = false;
-                txtBox_Senha.Enabled = false;
-                cBox_Nivel.Enabled = false;
-
-                btn_Inserir.Enabled = true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao inserir usuário. Por favor, tente novamente mais tarde." + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void Cancelar_Incluir(object sender, EventArgs e)
-        {
-            txtBox_Login.Clear();
-            txtBox_Nome.Clear();
-            txtBox_Senha.Clear();
-            cBox_Nivel.SelectedIndex = -1;
-
-            txtBox_Nome.Enabled = false;
-            txtBox_Login.Enabled = false;
-            txtBox_Senha.Enabled = false;
-            cBox_Nivel.Enabled = false;
-
-            btn_Add.Enabled = false;
-            btn_Can.Enabled = false;
-
-            btn_Inserir.Enabled = true;
+            btn_Ok.Enabled = true;
+            btn_Can.Enabled = true;
+            TxtBox_Login.Enabled = true;
+            TxtBox_Nome.Enabled = true;
+            TxtBox_Senha.Enabled = true;
+            CB_NivelAcesso.Enabled = true;
         }
         #endregion
 
-        #region Procurar From
-        private void Procurar(object sender, EventArgs e)
+        #region Buscar
+        private void btn_Buscar_Click(object sender, EventArgs e)
         {
-            frmBuscarUsuario buscar = new frmBuscarUsuario();
+            frmBuscarCadastro buscar = new frmBuscarCadastro("Usuário");
             buscar.ShowDialog();
         }
 
-        public void SetUsuarioSelecionado(Usuario usuario)
+        public void ResultadoUsuario(Usuario usuario)
         {
-            txtBox_ID.Text = Convert.ToString(usuario.ID);
-            txtBox_Nome.Text = usuario.Nome;
-            txtBox_Login.Text = usuario.Login;
-            cBox_Nivel.Text = usuario.NivelAcesso;
-
-            txtBox_Nome.Enabled = true;
-            txtBox_Login.Enabled = true;
-            cBox_Nivel.Enabled = true;
-            txtBox_Senha.Enabled = true;
+            TxtBox_ID.Text = Convert.ToString(usuario.ID);
+            TxtBox_Nome.Text = usuario.Nome.ToString();
+            TxtBox_Login.Text = usuario.Login.ToString();
+            CB_NivelAcesso.Text = usuario.NivelAcesso.ToString();
+            TxtBox_Senha.Text = "Desativado!";
 
             btn_Inserir.Enabled = false;
+            btn_Buscar.Enabled = false;
             btn_Editar.Enabled = true;
-            btn_Procurar.Enabled = true;
             btn_Deletar.Enabled = true;
         }
         #endregion
 
-        #region Função Editar
-        private void Editar(object sender, EventArgs e)
+        #region Editar
+        private void btn_Editar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtBox_ID.Text))
-            {
-                MessageBox.Show("Selecione um usuário para editar.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            try
-            {
-                Usuario usuario = new Usuario
-                {
-                    ID = Convert.ToInt32(txtBox_ID.Text),
-                    Nome = txtBox_Nome.Text,
-                    Login = txtBox_Login.Text,
-                    NivelAcesso = cBox_Nivel.Text,
-                    Senha = txtBox_Senha.Text
-                };
-
-                userDal.EditarUsuario(usuario);
-                MessageBox.Show("Usuário atualizado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                txtBox_Login.Clear();
-                txtBox_Nome.Clear();
-                txtBox_Senha.Clear();
-                cBox_Nivel.SelectedIndex = -1;
-
-                txtBox_Nome.Enabled = false;
-                txtBox_Login.Enabled = false;
-                txtBox_Senha.Enabled = false;
-                cBox_Nivel.Enabled = false;
-
-                btn_Deletar.Enabled = false;
-                btn_Editar.Enabled = false;
-                btn_Inserir.Enabled = true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao editar usuário. " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            acao = 2;
+            btn_Deletar.Enabled = false;
+            btn_Editar.Enabled = false;
+            TxtBox_Login.Enabled = true;
+            TxtBox_Nome.Enabled = true;
+            CB_NivelAcesso.Enabled = true;
+            btn_Ok.Enabled = true;
+            btn_Can.Enabled = true;
         }
         #endregion
 
-        #region Função Deletar
-        private void Deletar(object sender, EventArgs e)
+        #region Deletar
+        private void btn_Deletar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtBox_ID.Text))
+            if (string.IsNullOrEmpty(TxtBox_ID.Text))
             {
                 MessageBox.Show("Selecione um usuário para deletar.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -188,19 +90,17 @@ namespace Sistema_de_Estoque.UI.Cadastros
             {
                 try
                 {
-                    int idUsuario = Convert.ToInt32(txtBox_ID.Text);
+                    int idUsuario = Convert.ToInt32(TxtBox_ID.Text);
                     userDal.Deletar(idUsuario);
                     MessageBox.Show("Usuário deletado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    txtBox_ID.Clear();
-                    txtBox_Nome.Clear();
-                    txtBox_Login.Clear();
-                    txtBox_Senha.Clear();
-                    cBox_Nivel.SelectedIndex = -1;
+                    LimparCampo(TxtBox_ID, TxtBox_Login, TxtBox_Nome, TxtBox_Senha, CB_NivelAcesso);
 
+                    acao = 0;
                     btn_Editar.Enabled = false;
                     btn_Deletar.Enabled = false;
                     btn_Inserir.Enabled = true;
+                    btn_Buscar.Enabled = true;
                 }
                 catch (Exception ex)
                 {
@@ -209,6 +109,157 @@ namespace Sistema_de_Estoque.UI.Cadastros
             }
         }
         #endregion
+
+        #region btn_add(Inserir,Editar)
+        private void btn_Ok_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(TxtBox_Login.Text) ||
+                string.IsNullOrEmpty(TxtBox_Nome.Text) ||
+                string.IsNullOrEmpty(TxtBox_Senha.Text) ||
+                string.IsNullOrEmpty(CB_NivelAcesso.Text))
+            {
+                MessageBox.Show("Um campo ou mais campos não foram preenchidos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            if (acao == 1)
+            {
+                try
+                {
+                    Usuario usuario = new Usuario
+                    {
+                        Nome = TxtBox_Nome.Text,
+                        Login = TxtBox_Login.Text,
+                        Senha = TxtBox_Senha.Text,
+                        NivelAcesso = CB_NivelAcesso.Text
+                    };
+
+                    userDal.InserirUsuario(usuario);
+                    MessageBox.Show("Usuário inserido com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    LimparCampo(TxtBox_Login, TxtBox_Nome, TxtBox_Senha, CB_NivelAcesso);
+                    acao = 0;
+                    btn_Buscar.Enabled = true;
+                    btn_Inserir.Enabled = true;
+                    btn_Ok.Enabled = false;
+                    btn_Can.Enabled = false;
+                    TxtBox_Login.Enabled = false;
+                    TxtBox_Nome.Enabled = false;
+                    TxtBox_Senha.Enabled = false;
+                    CB_NivelAcesso.Enabled = false;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao inserir usuário. Por favor, tente novamente mais tarde." + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (acao == 2)
+            {
+                try
+                {
+                    TxtBox_Senha.Clear();
+
+                    Usuario usuario = new Usuario
+                    {
+                        ID = Convert.ToInt32(TxtBox_ID.Text),
+                        Nome = TxtBox_Nome.Text,
+                        Login = TxtBox_Login.Text,
+                        NivelAcesso = CB_NivelAcesso.Text,
+                        Senha = TxtBox_Senha.Text
+                    };
+
+                    userDal.EditarUsuario(usuario);
+                    MessageBox.Show("Usuário atualizado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    LimparCampo(TxtBox_ID, TxtBox_Login, TxtBox_Nome, TxtBox_Senha, CB_NivelAcesso);
+
+                    acao = 0;
+                    btn_Buscar.Enabled = true;
+                    btn_Inserir.Enabled = true;
+                    btn_Ok.Enabled = false;
+                    btn_Can.Enabled = false;
+                    TxtBox_Login.Enabled = false;
+                    TxtBox_Nome.Enabled = false;
+                    TxtBox_Senha.Enabled = false;
+                    CB_NivelAcesso.Enabled = false;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao editar usuário. " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+        #endregion
+
+        #region btn_can(Inserir,Buscar,Editar,Deletar)
+        private void btn_Can_Click(object sender, EventArgs e)
+        {
+            switch (acao)
+            {
+                case 1:
+                    MessageBox.Show("Você cancelou a função Inserir", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                    LimparCampo(TxtBox_Login, TxtBox_Nome, TxtBox_Senha, CB_NivelAcesso);
+                    acao = 0;
+                    btn_Buscar.Enabled = true;
+                    btn_Inserir.Enabled = true;
+                    btn_Ok.Enabled = false;
+                    btn_Can.Enabled = false;
+                    TxtBox_Login.Enabled = false;
+                    TxtBox_Nome.Enabled = false;
+                    TxtBox_Senha.Enabled = false;
+                    CB_NivelAcesso.Enabled = false;
+                    break;
+
+                case 2:
+                    MessageBox.Show("Você cancelou a função Editar/Deletar", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                    LimparCampo(TxtBox_Login, TxtBox_Nome, TxtBox_Senha, CB_NivelAcesso);
+                    acao = 0;
+                    btn_Buscar.Enabled = true;
+                    btn_Inserir.Enabled = true;
+                    btn_Ok.Enabled = false;
+                    btn_Can.Enabled = false;
+                    TxtBox_Login.Enabled = false;
+                    TxtBox_Nome.Enabled = false;
+                    TxtBox_Senha.Enabled = false;
+                    CB_NivelAcesso.Enabled = false;
+                    break;
+            }
+        }
+        #endregion
+
+        #endregion
+
+        #region Métodos
+        private void btn_MouseLeave(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            if (btn != null)
+            {
+                btn.BackColor = SystemColors.MenuBar;
+            }
+        }
+
+        private void btn_MouseEnter(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            if (btn != null)
+            {
+                btn.BackColor = SystemColors.ScrollBar;
+            }
+        }
+
+        private void LimparCampo(params Control[] campos)
+        {
+            foreach (Control campo in campos)
+            {
+                if (campo is TextBox txt) txt.Clear();
+                if (campo is ComboBox cb) cb.SelectedIndex = -1;
+            }
+        }
+
+        #endregion
+
 
     }
 }
