@@ -1,13 +1,8 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sistema_de_Estoque.DAL;
 using Sistema_de_Estoque.Entities;
@@ -18,7 +13,7 @@ namespace Sistema_de_Estoque.UI.Cadastros
     public partial class frmProdutos : Form
     {
         ProdutoDAL produtoDAL = new ProdutoDAL();
-
+        int acao;
         public frmProdutos()
         {
             InitializeComponent();
@@ -26,32 +21,246 @@ namespace Sistema_de_Estoque.UI.Cadastros
 
         private void frmProdutos_Load(object sender, EventArgs e)
         {
-            CarregarFornecedores(cbBox_Fornecedor);
-            CarregarCategoria(cbBox_Categoria);
+            CarregarFornecedores(CB_Fornecedor);
+            CarregarCategoria(CB_Categoria);
         }
 
+        #region Funções
 
-        #region Métodos
-
-        #region Preço TxtBox
-        private void txtBox_Preco_Leave(object sender, EventArgs e)
+        #region Inserir
+        private void btn_Inserir_Click(object sender, EventArgs e)
         {
-            if (decimal.TryParse(txtBox_Preco.Text, NumberStyles.Currency, CultureInfo.GetCultureInfo("pt-BR"), out decimal preco))
+            acao = 1;
+
+            btn_Inserir.Enabled = false;
+            btn_Buscar.Enabled = false;
+            btn_Editar.Enabled = false;
+            btn_Deletar.Enabled = false;
+            btn_Ok.Enabled = true;
+            btn_Can.Enabled = true;
+
+            TxtBox_Nome.Enabled = true;
+            TxtBox_Preco.Enabled = true;
+            NumUp_Quantidade.Enabled = true;
+            CB_Categoria.Enabled = true;
+            CB_Fornecedor.Enabled = true;
+        }
+        #endregion
+
+        #region Buscar
+        private void btn_Buscar_Click(object sender, EventArgs e)
+        {
+            frmBuscarCadastro cadastro = new frmBuscarCadastro("Produtos");
+            cadastro.ShowDialog();
+        }
+        public void ResultadoProdutos(Produto produto)
+        {
+            TxtBox_ID.Text = produto.ID.ToString();
+            TxtBox_Nome.Text = produto.Nome;
+            TxtBox_Preco.Text = produto.Preco.ToString("F2", CultureInfo.GetCultureInfo("pt-BR"));
+            CB_Categoria.Text = produto.Categoria;
+            CB_Fornecedor.SelectedValue = produto.FornecedorID;
+            NumUp_Quantidade.Value = produto.Quantidade;
+
+            btn_Inserir.Enabled = false;
+            btn_Buscar.Enabled = false;
+            btn_Editar.Enabled = true;
+            btn_Deletar.Enabled = true;
+        }
+        #endregion
+
+        #region Editar
+        private void btn_Editar_Click(object sender, EventArgs e)
+        {
+            acao = 2;
+
+            btn_Inserir.Enabled = false;
+            btn_Buscar.Enabled = false;
+            btn_Editar.Enabled = false;
+            btn_Deletar.Enabled = false;
+            btn_Ok.Enabled = true;
+            btn_Can.Enabled = true;
+
+            TxtBox_Nome.Enabled = true;
+            TxtBox_Preco.Enabled = true;
+            NumUp_Quantidade.Enabled = true;
+            CB_Categoria.Enabled = true;
+            CB_Fornecedor.Enabled = true;
+        }
+        #endregion
+
+        #region Deletar
+        private void btn_Deletar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(TxtBox_ID.Text))
             {
-                txtBox_Preco.Text = preco.ToString("F2", CultureInfo.GetCultureInfo("pt-BR"));
+                MessageBox.Show("Selecione um produto para deletar.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            else
+
+            DialogResult result = MessageBox.Show("Tem certeza que deseja excluir este produto?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
             {
-                MessageBox.Show("Valor Inválido. Insira um valor numérico válido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtBox_Preco.Focus();
+                try
+                {
+                    int idProduto = Convert.ToInt32(TxtBox_ID.Text);
+                    produtoDAL.DeletarProduto(idProduto);
+                    MessageBox.Show("Produto excluído com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    LimparCampo(TxtBox_ID, TxtBox_Nome, TxtBox_Preco, CB_Categoria, CB_Fornecedor, NumUp_Quantidade);
+
+                    acao = 0;
+
+                    btn_Inserir.Enabled = true;
+                    btn_Buscar.Enabled = true;
+                    btn_Editar.Enabled = false;
+                    btn_Deletar.Enabled = false;
+                    btn_Ok.Enabled = false;
+                    btn_Can.Enabled = false;
+
+                    TxtBox_Nome.Enabled = false;
+                    TxtBox_Preco.Enabled = false;
+                    NumUp_Quantidade.Enabled = false;
+                    CB_Categoria.Enabled = false;
+                    CB_Fornecedor.Enabled = false;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao excluir o produto. \n\nDetalhes: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
         #endregion
 
-        #region ComboBox FornecedorID
+        #region btn_add
+        private void btn_Ok_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(TxtBox_Nome.Text) ||
+                string.IsNullOrEmpty(TxtBox_Preco.Text) ||
+                int.Equals(0, NumUp_Quantidade.Value) ||
+                string.IsNullOrEmpty(CB_Categoria.Text) ||
+                string.IsNullOrEmpty(CB_Fornecedor.Text)
+                )
+            {
+                MessageBox.Show("Um campo ou mais campos não foram preenchidos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            if (acao == 1)
+            {
+                try
+                {
+                    int fornecedorID = (int)CB_Fornecedor.SelectedValue;
+                    if (!decimal.TryParse(TxtBox_Preco.Text, NumberStyles.Currency, CultureInfo.GetCultureInfo("pt-BR"), out decimal preco))
+                    {
+                        MessageBox.Show("Preço inválido. Insira um valor numérico.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    Produto produtos = new Produto
+                    {
+                        Nome = TxtBox_Nome.Text,
+                        Categoria = CB_Categoria.Text,
+                        Quantidade = Convert.ToInt32(NumUp_Quantidade.Value),
+                        Preco = preco,
+                        FornecedorID = fornecedorID
+                    };
+
+                    produtoDAL.InserirProduto(produtos);
+                    MessageBox.Show($"O produto {TxtBox_Nome.Text} foi inserido!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    LimparCampo(TxtBox_ID, TxtBox_Nome, TxtBox_Preco, CB_Categoria, CB_Fornecedor, NumUp_Quantidade);
+
+                    acao = 0;
+
+                    btn_Inserir.Enabled = true;
+                    btn_Buscar.Enabled = true;
+                    btn_Editar.Enabled = false;
+                    btn_Deletar.Enabled = false;
+                    btn_Ok.Enabled = false;
+                    btn_Can.Enabled = false;
+
+                    TxtBox_Nome.Enabled = false;
+                    TxtBox_Preco.Enabled = false;
+                    NumUp_Quantidade.Enabled = false;
+                    CB_Categoria.Enabled = false;
+                    CB_Fornecedor.Enabled = false;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao inserir o Produto!: " + ex, "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (acao == 2)
+            {
+                try
+                {
+                    int fornecedorID = (int)CB_Fornecedor.SelectedValue;
+                    if (!decimal.TryParse(TxtBox_Preco.Text, NumberStyles.Currency, CultureInfo.GetCultureInfo("pt-BR"), out decimal preco))
+                    {
+                        MessageBox.Show("Preço inválido. Insira um valor numérico.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    Produto produtos = new Produto
+                    {
+                        ID = Convert.ToInt32(TxtBox_ID.Text),
+                        Nome = TxtBox_Nome.Text,
+                        Categoria = CB_Categoria.Text,
+                        Preco = preco,
+                        Quantidade = Convert.ToInt32(NumUp_Quantidade.Value),
+                        FornecedorID = fornecedorID
+                    };
+
+                    produtoDAL.EditarProduto(produtos);
+                    MessageBox.Show($"Você alterou o {TxtBox_Nome.Text}", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    LimparCampo(TxtBox_ID, TxtBox_Nome, TxtBox_Preco, CB_Categoria, CB_Fornecedor, NumUp_Quantidade);
+
+                    acao = 0;
+
+                    btn_Inserir.Enabled = true;
+                    btn_Buscar.Enabled = true;
+                    btn_Editar.Enabled = false;
+                    btn_Deletar.Enabled = false;
+                    btn_Ok.Enabled = false;
+                    btn_Can.Enabled = false;
+
+                    TxtBox_Nome.Enabled = false;
+                    TxtBox_Preco.Enabled = false;
+                    NumUp_Quantidade.Enabled = false;
+                    CB_Categoria.Enabled = false;
+                    CB_Fornecedor.Enabled = false;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao editar o Produto!: " + ex, "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+        }
+        #endregion
+
+        #endregion
+
+        #region Métodos
+
+
+        private void txtBox_Preco_Leave(object sender, EventArgs e)
+        {
+            if (decimal.TryParse(TxtBox_Preco.Text, NumberStyles.Currency, CultureInfo.GetCultureInfo("pt-BR"), out decimal preco))
+            {
+                TxtBox_Preco.Text = preco.ToString("F2", CultureInfo.GetCultureInfo("pt-BR"));
+            }
+            else
+            {
+                MessageBox.Show("Valor Inválido. Insira um valor numérico válido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                TxtBox_Preco.Focus();
+            }
+        }
+
         private void CarregarFornecedores(ComboBox comboBox)
         {
-            comboBox.SelectedIndex = -1;
             try
             {
                 using (MySqlConnection connection = new MySqlConnection(ProdutoDAL.strConnection))
@@ -80,10 +289,9 @@ namespace Sistema_de_Estoque.UI.Cadastros
             {
                 MessageBox.Show("Erro ao carregar fornecedores: " + ex.Message);
             }
+            comboBox.SelectedIndex = -1;
         }
-        #endregion
 
-        #region ComboBox Categoria
         private void CarregarCategoria(ComboBox comboBox)
         {
             comboBox.SelectedIndex = -1;
@@ -97,226 +305,32 @@ namespace Sistema_de_Estoque.UI.Cadastros
                 MessageBox.Show("Erro ao carregar Categorias: " + ex.Message);
             }
         }
-        #endregion
 
-        #region Inserir Produto
-        private void btn_Inserir_Click(object sender, EventArgs e)
+        private void btn_MouseLeave(object sender, EventArgs e)
         {
-            TabControl_Produto.Enabled = true;
-            TabControl_Produto.SelectedTab = Page_Inserir;
-            Page_Inserir.Text = "Inserir";
-            TabControl_Produto.TabPages[1].Enabled = false;
-            TabControl_Produto.TabPages[0].Enabled = true;
-            btn_Procurar.Enabled = false;
+            Button btn = (Button)sender;
+            if (btn != null)
+            {
+                btn.BackColor = SystemColors.MenuBar;
+            }
         }
 
-        private void InserirAdd(object sender, EventArgs e)
+        private void btn_MouseEnter(object sender, EventArgs e)
         {
-            txtBox_ID.Enabled = false;
-
-            if (cbBox_Fornecedor.SelectedItem != null && cbBox_Categoria.SelectedIndex >= 0)
+            Button btn = (Button)sender;
+            if (btn != null)
             {
-                if (string.IsNullOrEmpty(txtBox_Nome.Text) ||
-                    string.IsNullOrEmpty(txtBox_Quantidade.Text) ||
-                    string.IsNullOrEmpty(txtBox_Preco.Text))
-                {
-                    MessageBox.Show("Um campo ou mais campos não foram preenchidos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    return;
-                }
-
-                try
-                {
-                    int fornecedorID = (int)cbBox_Fornecedor.SelectedValue;
-                    if (!decimal.TryParse(txtBox_Preco.Text, NumberStyles.Currency, CultureInfo.GetCultureInfo("pt-BR"), out decimal preco))
-                    {
-                        MessageBox.Show("Preço inválido. Insira um valor numérico.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-
-                    Produto produto = new Produto
-                    {
-                        Nome = txtBox_Nome.Text,
-                        Categoria = cbBox_Categoria.Text,
-                        FornecedorID = fornecedorID,
-                        Quantidade = Convert.ToInt32(txtBox_Quantidade.Text),
-                        Preco = preco
-                    };
-
-                    produtoDAL.InserirProduto(produto);
-                    MessageBox.Show("Produto inserido com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    txtBox_Nome.Clear();
-                    txtBox_Quantidade.Clear();
-                    txtBox_Preco.Clear();
-                    cbBox_Categoria.SelectedIndex = -1;
-                    cbBox_Fornecedor.SelectedIndex = -1;
-                    Page_Inserir.Text = "";
-
-                    TabControl_Produto.Enabled = false;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Erro ao inserir o produto.\n\nDetalhes técnicos: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Selecione um fornecedor e uma categoria!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                btn.BackColor = SystemColors.ScrollBar;
             }
         }
-        #endregion
 
-        #region Procurar Produto
-        private void btn_Procurar_Click(object sender, EventArgs e)
+        private void LimparCampo(params Control[] campos)
         {
-            TabControl_Produto.Enabled = true;
-            TabControl_Produto.SelectedTab = Page_Procurar;
-            TabControl_Produto.TabPages[0].Enabled = false;
-            TabControl_Produto.TabPages[1].Enabled = true;
-            frmBuscarProduto frmBuscarProduto = new frmBuscarProduto();
-            frmBuscarProduto.ShowDialog();
-        }
-
-        public void SetProdutoSelecionado(Produto produtoSelecionado)
-        {
-            TabControl_Produto.TabPages[1].Enabled = true;
-
-            CarregarFornecedores(cbBox_pFornecedor);
-            CarregarCategoria(cbBox_pCategoria);
-
-            txtBox_pID.Text = produtoSelecionado.ID.ToString();
-            txtBox_pNome.Text = produtoSelecionado.Nome;
-            txtBox_pQuantidade.Text = produtoSelecionado.Quantidade.ToString();
-            txtBox_pPreco.Text = produtoSelecionado.Preco.ToString("F2", CultureInfo.GetCultureInfo("pt-BR"));
-
-            if (cbBox_pCategoria.Items.Contains(produtoSelecionado.Categoria))
+            foreach (Control campo in campos)
             {
-                cbBox_pCategoria.SelectedItem = produtoSelecionado.Categoria;
-            }
-            else
-            {
-                MessageBox.Show($"Categoria '{produtoSelecionado.Categoria}' não encontrada na lista!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-
-            if (cbBox_pFornecedor.Items.Cast<KeyValuePair<int, string>>().Any(f => f.Key == produtoSelecionado.FornecedorID))
-            {
-                cbBox_pFornecedor.SelectedValue = produtoSelecionado.FornecedorID;
-            }
-            else
-            {
-                MessageBox.Show($"Fornecedor ID '{produtoSelecionado.FornecedorID}' não encontrado na lista!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-
-            btn_Inserir.Enabled = false;
-            btn_Editar.Enabled = true;
-            btn_Deletar.Enabled = true;
-
-        }
-        #endregion
-
-        #region Editar Produto
-        private void btn_Editar_Click(object sender, EventArgs e)
-        {
-            txtBox_pID.Enabled = false;
-            txtBox_pNome.Enabled = true;
-            cbBox_pCategoria.Enabled = true;
-            cbBox_pFornecedor.Enabled = true;
-            Page_Procurar.Text = "Editar";
-            txtBox_pPreco.Enabled = true;
-            txtBox_pQuantidade.Enabled = true;
-            btn_EditaAdd.Enabled = true;
-        }
-
-        private void btn_EditaAdd_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtBox_pNome.Text)
-                || string.IsNullOrEmpty(txtBox_pPreco.Text)
-                || string.IsNullOrEmpty(txtBox_pQuantidade.Text)
-                || cbBox_pCategoria.SelectedIndex == -1
-                || cbBox_pFornecedor.SelectedIndex == -1
-                )
-            {
-                MessageBox.Show("Nenhuma caixa deve está vázia!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            try
-            {
-                int fornecedorID = (int)cbBox_pFornecedor.SelectedValue;
-                if (!decimal.TryParse(txtBox_pPreco.Text, NumberStyles.Currency, CultureInfo.GetCultureInfo("pt-BR"), out decimal preco))
-                {
-                    MessageBox.Show("Preço inválido. Insira um valor numérico.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                Produto produto = new Produto
-                {
-                    ID = Convert.ToInt32(txtBox_pID.Text),
-                    Nome = txtBox_pNome.Text,
-                    Categoria = cbBox_pCategoria.Text,
-                    FornecedorID = fornecedorID,
-                    Preco = preco,
-                    Quantidade = Convert.ToInt32(txtBox_pQuantidade.Text)
-                };
-                produtoDAL.EditarProduto(produto);
-                MessageBox.Show("Produto atualizado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                txtBox_pNome.Clear();
-                txtBox_pQuantidade.Clear();
-                txtBox_pPreco.Clear();
-                cbBox_pCategoria.SelectedIndex = -1;
-                cbBox_pFornecedor.SelectedIndex = -1;
-
-                btn_Editar.Enabled = false;
-                btn_Deletar.Enabled = false;
-                btn_Inserir.Enabled = true;
-                Page_Procurar.Text = "";
-                TabControl_Produto.Enabled = false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Erro ao editar o produto.\n\nDetalhes técnicos: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        #endregion
-
-        #region Deletar Produto
-        private void btn_Deletar_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtBox_pID.Text))
-            {
-                MessageBox.Show("Nenhum produto selecionado para exclusão!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            DialogResult confirmacao = MessageBox.Show("Tem certeza que deseja excluir este produto?",
-                                                       "Confirmação",
-                                                       MessageBoxButtons.YesNo,
-                                                       MessageBoxIcon.Question);
-
-            if (confirmacao == DialogResult.Yes)
-            {
-                try
-                {
-                    int produtoID = Convert.ToInt32(txtBox_pID.Text);
-                    produtoDAL.DeletarProduto(produtoID);
-
-                    MessageBox.Show("Produto excluído com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    txtBox_pID.Clear();
-                    txtBox_pNome.Clear();
-                    txtBox_pQuantidade.Clear();
-                    txtBox_pPreco.Clear();
-                    cbBox_pCategoria.SelectedIndex = -1;
-                    cbBox_pFornecedor.SelectedIndex = -1;
-
-                    btn_Editar.Enabled = false;
-                    btn_Deletar.Enabled = false;
-                    btn_Inserir.Enabled = true;
-
-                    TabControl_Produto.Enabled = false;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Erro ao excluir o produto. \n\nDetalhes: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                if (campo is TextBox txt) txt.Clear();
+                if (campo is ComboBox cb) cb.SelectedIndex = -1;
+                if (campo is NumericUpDown upDown) upDown.Value = 1;
             }
         }
 
@@ -325,36 +339,26 @@ namespace Sistema_de_Estoque.UI.Cadastros
         #region Cancelar
         private void btn_Can_Click(object sender, EventArgs e)
         {
-            txtBox_ID.Clear();
-            txtBox_Nome.Clear();
-            cbBox_Categoria.SelectedIndex = -1;
-            cbBox_Fornecedor.SelectedIndex = -1;
-            txtBox_Preco.Clear();
-            txtBox_Quantidade.Clear();
 
-            TabControl_Produto.TabPages[0].Enabled = false;
-            Page_Inserir.Text = "";
-            btn_Procurar.Enabled = true;
-        }
+            LimparCampo(TxtBox_ID, TxtBox_Nome, TxtBox_Preco, CB_Categoria, CB_Fornecedor, NumUp_Quantidade);
 
-        private void btn_can2_Click(object sender, EventArgs e)
-        {
-            txtBox_pNome.Clear();
-            cbBox_pCategoria.SelectedIndex = -1;
-            cbBox_pFornecedor.SelectedIndex = -1;
-            txtBox_pPreco.Clear();
-            txtBox_pQuantidade.Clear();
+            acao = 0;
 
-            TabControl_Produto.TabPages[1].Enabled = false;
-            Page_Procurar.Text = "";
             btn_Inserir.Enabled = true;
-            btn_Procurar.Enabled = true;
+            btn_Buscar.Enabled = true;
             btn_Editar.Enabled = false;
             btn_Deletar.Enabled = false;
+            btn_Ok.Enabled = false;
+            btn_Can.Enabled = false;
+
+            TxtBox_Nome.Enabled = false;
+            TxtBox_Preco.Enabled = false;
+            NumUp_Quantidade.Enabled = false;
+            CB_Categoria.Enabled = false;
+            CB_Fornecedor.Enabled = false;
         }
 
         #endregion
 
-        #endregion
     }
 }
