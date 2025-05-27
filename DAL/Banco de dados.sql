@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.41, for Win64 (x86_64)
 --
--- Host: localhost    Database: estoqueDB
+-- Host: localhost    Database: estoquedb
 -- ------------------------------------------------------
 -- Server version	8.0.41
 
@@ -16,14 +16,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Current Database: `estoqueDB`
---
-
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `estoqueDB` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-
-USE `estoqueDB`;
-
---
 -- Table structure for table `fornecedores`
 --
 
@@ -36,7 +28,7 @@ CREATE TABLE `fornecedores` (
   `Contato` varchar(100) NOT NULL,
   `Endereco` text,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -64,6 +56,7 @@ CREATE TABLE `movimentacao_estoque` (
   `data_movimentacao` datetime DEFAULT CURRENT_TIMESTAMP,
   `usuario_id` int NOT NULL,
   `fornecedor_id` int DEFAULT NULL,
+  `motivo` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `produto_id` (`produto_id`),
   KEY `usuario_id` (`usuario_id`),
@@ -71,7 +64,7 @@ CREATE TABLE `movimentacao_estoque` (
   CONSTRAINT `movimentacao_estoque_ibfk_1` FOREIGN KEY (`produto_id`) REFERENCES `produtos` (`ID`),
   CONSTRAINT `movimentacao_estoque_ibfk_2` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`ID`),
   CONSTRAINT `movimentacao_estoque_ibfk_3` FOREIGN KEY (`fornecedor_id`) REFERENCES `fornecedores` (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -80,6 +73,7 @@ CREATE TABLE `movimentacao_estoque` (
 
 LOCK TABLES `movimentacao_estoque` WRITE;
 /*!40000 ALTER TABLE `movimentacao_estoque` DISABLE KEYS */;
+INSERT INTO `movimentacao_estoque` VALUES (1,2,'Entrada',15,'2005-05-18 00:00:00',1,3,NULL),(2,2,'Saída',15,'2005-05-18 00:00:00',1,NULL,NULL),(3,1,'Entrada',15,'2025-04-15 08:26:30',2,3,NULL),(4,4,'Saída',4,'2025-04-16 14:35:39',1,NULL,NULL),(5,7,'Saída',6,'2025-04-16 14:50:15',11,NULL,NULL),(6,7,'Entrada',6,'2025-04-16 14:50:21',11,7,NULL),(7,3,'Entrada',5,'2025-04-17 14:53:52',1,3,NULL),(8,9,'Entrada',6,'2025-04-17 15:00:11',6,4,NULL),(9,9,'Entrada',6,'2025-04-17 15:00:15',6,4,NULL),(10,9,'Entrada',3,'2025-04-17 15:01:18',6,4,NULL),(11,3,'Entrada',3,'2025-04-21 11:23:46',1,3,NULL),(12,3,'Entrada',100,'2025-04-21 11:24:30',6,3,NULL),(13,3,'Saída',4,'2025-04-22 17:00:23',1,NULL,'Venda'),(14,9,'Entrada',4500,'2025-04-22 17:08:47',6,4,NULL),(15,9,'Saída',4500,'2025-04-22 17:09:33',6,NULL,'Devolução ao fornecedor'),(16,7,'Saída',21,'2025-05-21 18:22:55',1,NULL,'Venda');
 /*!40000 ALTER TABLE `movimentacao_estoque` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -100,7 +94,7 @@ CREATE TABLE `produtos` (
   PRIMARY KEY (`ID`),
   KEY `FornecedorID` (`FornecedorID`),
   CONSTRAINT `produtos_ibfk_1` FOREIGN KEY (`FornecedorID`) REFERENCES `fornecedores` (`ID`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -109,7 +103,7 @@ CREATE TABLE `produtos` (
 
 LOCK TABLES `produtos` WRITE;
 /*!40000 ALTER TABLE `produtos` DISABLE KEYS */;
-INSERT INTO `produtos` VALUES (1,'Cabo HDMI','Eletrônicos',150,25.00,1),(2,'Arroz 5kg','Alimentos',200,19.90,2),(3,'Refrigerante de Laranja 1L','Bebidas',150,4.50,3),(4,'Computador Desktop','Eletrônicos',50,2800.00,4),(5,'Calça Jeans Masculina','Vestuário',125,89.90,5),(6,'Detergente Líquido 500ml','Limpeza',300,3.00,6),(7,'Sofá 3 Lugares','Móveis',40,900.00,7),(8,'Caneta Azul','Papelaria',500,3.00,8),(9,'Placa Mae Pichau B550M K, DDR4, Socket AMD AM4, M-ATX, Chipset AMD B550, B550M-K-1P','Eletrônicos',17,499.99,4);
+INSERT INTO `produtos` VALUES (1,'Cabo HDMI','Eletrônicos',150,25.00,1),(2,'Arroz 5kg','Alimentos',192,19.90,2),(3,'Refrigerante de Laranja 1L','Bebidas',238,4.50,3),(4,'Computador Desktop','Eletrônicos',46,2800.00,4),(5,'Calça Jeans Masculina','Vestuário',125,89.90,5),(6,'Detergente Líquido 500ml','Limpeza',300,3.00,6),(7,'Sofá 3 Lugares','Móveis',19,900.00,7),(8,'Caneta Azul','Papelaria',500,3.00,8),(9,'Placa Mae Pichau B550M K, DDR4, Socket AMD AM4, M-ATX, Chipset AMD B550, B550M-K-1P','Eletrônicos',32,499.99,4),(10,'Arroz Tio João 5kg','Alimentos',100,18.50,2),(11,'Feijão Carioca 1kg','Alimentos',150,7.20,2),(12,'Macarrão Espaguete 500g','Alimentos',120,3.80,2),(13,'Azeite Extra Virgem 500ml','Alimentos',80,22.90,2),(14,'Refrigerante Coca-Cola 2L','Bebidas',200,8.90,3),(15,'Suco de Laranja Natural 1L','Bebidas',180,6.50,3),(16,'Água Mineral 500ml','Bebidas',300,1.00,3),(17,'Cerveja Heineken 600ml','Bebidas',250,6.80,3),(18,'Mouse Logitech M170','Eletrônicos',50,49.90,1),(19,'Teclado Mecânico Redragon','Eletrônicos',30,159.00,1),(20,'Monitor Samsung 24\"','Eletrônicos',20,899.90,4),(21,'Notebook Lenovo i5 8GB','Eletrônicos',10,2999.00,4),(22,'Camiseta Básica Branca G','Vestuário',100,25.00,5),(23,'Calça Jeans Slim 42','Vestuário',60,79.90,5),(24,'Jaqueta Corta Vento P','Vestuário',40,129.90,5),(25,'Tênis Esportivo 40','Vestuário',70,149.90,5),(26,'Sabão em Pó OMO 1kg','Limpeza',90,9.50,6),(27,'Desinfetante Pinho 1L','Limpeza',110,4.75,6),(28,'Detergente Ypê Neutro 500ml','Limpeza',200,2.30,6),(29,'Esponja Multiuso','Limpeza',250,1.10,6),(30,'Cadeira de Escritório Ergonômica','Móveis',15,399.90,7),(31,'Mesa de Jantar 4 Lugares','Móveis',10,749.00,7),(33,'Estante de Livros 5 Prateleiras','Móveis',12,249.90,7),(34,'Caderno Universitário 200 folhas','Papelaria',120,14.90,8),(35,'Caneta Esferográfica Azul','Papelaria',500,1.20,8),(36,'Lápis de Cor 24 cores','Papelaria',70,12.90,8),(37,'Papel Sulfite A4 500 folhas','Papelaria',80,21.00,8),(38,'Kit Upgrade - Intel Core i5-3470 + Placa Mãe B75 Lga 1155 + 16GB Ram DDR3','Eletrônicos',85,389.99,4);
 /*!40000 ALTER TABLE `produtos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -128,7 +122,7 @@ CREATE TABLE `usuarios` (
   `NivelAcesso` enum('Admin','Vendedor') NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `Login` (`Login`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -137,12 +131,12 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'Admin','admin','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','Admin'),(2,'Jonas Richard','Jonas','d139aec8adab7ea14d744312e8a87c71f398e88b45dca6dc0547faf252769d6e','Vendedor'),(6,'teste','testess','d85bab5a59545850fa4c83a758ddc20428c823f03f5a63e16919aa3ce3c7909f','Vendedor'),(11,'Jonas1','Jonas1','5056a33ae88b34693e61bf87bbc6c9719e0010f2500345acadfbbc9c4924dd4b','Vendedor');
+INSERT INTO `usuarios` VALUES (1,'Admin','admin','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','Admin'),(2,'Jonas Richard','Jonas','d139aec8adab7ea14d744312e8a87c71f398e88b45dca6dc0547faf252769d6e','Vendedor'),(6,'teste','testess','d85bab5a59545850fa4c83a758ddc20428c823f03f5a63e16919aa3ce3c7909f','Vendedor'),(11,'Jonas1','Jonas1','5056a33ae88b34693e61bf87bbc6c9719e0010f2500345acadfbbc9c4924dd4b','Vendedor'),(13,'John','John18','5db6c89dee045111584e2defb6b164c8f24dd793aeddcb505fe92a9edffb839c','Admin');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Dumping routines for database 'estoqueDB'
+-- Dumping routines for database 'estoquedb'
 --
 /*!50003 DROP PROCEDURE IF EXISTS `BuscarFornecedores` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -404,17 +398,44 @@ DELIMITER ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `EntradaEstoque`(
-	IN p_ProdutoID INT,
+    IN p_ProdutoID INT,
     IN p_Quantidade INT,
-    IN p_FornecedorID INT
+    IN p_FornecedorID INT,
+    IN p_UsuarioID INT,
+    IN p_Tipo VARCHAR(10)
 )
 BEGIN
-	UPDATE Produtos
+
+    IF p_Tipo <> 'Entrada' THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Tipo inválido: utilize "Entrada" como tipo nesta procedure.';
+    END IF;
+
+    IF p_Quantidade <= 0 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Quantidade inválida: deve ser maior que zero.';
+    END IF;
+
+    IF NOT EXISTS (SELECT 1 FROM produtos WHERE ID = p_ProdutoID) THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Produto não encontrado.';
+    END IF;
+
+    IF NOT EXISTS (SELECT 1 FROM fornecedores WHERE ID = p_FornecedorID) THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Fornecedor não encontrado.';
+    END IF;
+
+    UPDATE produtos
     SET Quantidade = Quantidade + p_Quantidade
-    WHERE ProdutoID = p_ProdutoID;
-    
-    INSERT INTO HistoricoEstoque (ProdutoID, Quantidade, TipoMovimentacao, DataMovimentacao, FornecedorID)
-	VALUES (p_ProdutoID, p_Quantidade, 'Entrada', NOW(), p_FornecedorID);
+    WHERE ID = p_ProdutoID;
+
+    INSERT INTO movimentacao_estoque (
+        produto_id, tipo, quantidade, data_movimentacao, usuario_id, fornecedor_id
+    )
+    VALUES (
+        p_ProdutoID, p_Tipo, p_Quantidade, NOW(), p_UsuarioID, p_FornecedorID
+    );
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -496,6 +517,40 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `RelatorioProdutos` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `RelatorioProdutos`(
+	IN p_Nomee VARCHAR(100),
+    IN p_Categorias VARCHAR(100)
+)
+BEGIN 
+    SELECT
+        p.ID AS ID,
+        p.Nome AS NomeProduto,
+        p.Quantidade AS Quantidade,
+        p.Categoria AS Categoria,
+        p.Preco AS Preco,
+        f.Nome AS Fornecedor
+    FROM
+        produtos p
+    INNER JOIN fornecedores f ON p.FornecedorID = f.ID
+    WHERE (p_Nomee = '' OR p.Nome LIKE CONCAT('%', p_Nomee, '%'))
+      AND (p_Categorias = '' OR p.Categoria LIKE CONCAT('%', p_Categorias, '%'))
+    ORDER BY p.Nome ASC;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `SaidaEstoque` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -507,23 +562,43 @@ DELIMITER ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SaidaEstoque`(
-	IN p_ProdutoID INT,
+    IN p_ProdutoID INT,
     IN p_Quantidade INT,
-    IN p_Motivo VARCHAR(255)
+    IN p_UsuarioID INT,
+    IN p_Tipo VARCHAR(10),
+    IN p_Motivo VARCHAR(100)
 )
 BEGIN
-	IF (SELECT Quantidade FROM Produtos WHERE ProdutoID = p_ProdutoID) >= p_Quantidade THEN
-    
-    UPDATE Produtos
-    SET Quantidade = Qunatidade - p_Quantidade
-    WHERE ProdutoID = p_ProdutoID;
-    
-    INSERT INTO HistoricoEstoque (ProdutoID, Quantidade, TipoMovimentacao, DataMovimentacao, Motivo)
-        VALUES (p_ProdutoID, p_Quantidade, 'Saída', NOW(), p_Motivo);
-    ELSE
+    IF p_Tipo <> 'Saída' THEN
         SIGNAL SQLSTATE '45000'
-        SET MESSAGE_TEXT = 'Estoque insuficiente para esta operação';
+        SET MESSAGE_TEXT = 'Tipo inválido: utilize "Saída" como tipo nesta procedure.';
     END IF;
+
+    IF p_Quantidade <= 0 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Quantidade inválida: deve ser maior que zero.';
+    END IF;
+
+    IF NOT EXISTS (SELECT 1 FROM produtos WHERE ID = p_ProdutoID) THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Produto não encontrado.';
+    END IF;
+
+    IF (SELECT Quantidade FROM produtos WHERE ID = p_ProdutoID) < p_Quantidade THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Estoque insuficiente para esta operação.';
+    END IF;
+
+    UPDATE produtos
+    SET Quantidade = Quantidade - p_Quantidade
+    WHERE ID = p_ProdutoID;
+
+    INSERT INTO movimentacao_estoque (
+        produto_id, tipo, quantidade, data_movimentacao, usuario_id, motivo
+    )
+    VALUES (
+        p_ProdutoID, p_Tipo, p_Quantidade, NOW(), p_UsuarioID, p_Motivo
+    );
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -577,4 +652,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-04-02 18:58:47
+-- Dump completed on 2025-05-27 16:49:36
